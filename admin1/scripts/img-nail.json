@@ -1,0 +1,47 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "nail salon manicure pedicure station bright modern"
+✅ Got 5 images
+{
+  "success": true,
+  "query": "nail salon manicure pedicure station bright modern",
+  "count": 5,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7ee7e163806f.jpg",
+      "caption": "",
+      "source": "Salon City",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1bcadf9979ec.jpg",
+      "caption": "",
+      "source": "luxspashop.com",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/59b03dbac222.jpg",
+      "caption": "",
+      "source": "Etsy",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e5dc78640b72.jpg",
+      "caption": "",
+      "source": "Yelp",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ed01e7ac4b91.jpg",
+      "caption": "",
+      "source": "Alibaba.com",
+      "original_width": "1280px",
+      "original_height": "1280px"
+    }
+  ]
+}

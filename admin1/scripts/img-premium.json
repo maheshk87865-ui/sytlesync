@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "modern premium hair salon interior with styling chairs"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "modern premium hair salon interior with styling chairs",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c093009ab8f2.jpg",
+      "caption": "",
+      "source": "DIR Store",
+      "original_width": "2800px",
+      "original_height": "1400px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8a9dca3fb15d.jpg",
+      "caption": "",
+      "source": "Salon Renter",
+      "original_width": "2048px",
+      "original_height": "1365px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/738c4f83366a.jpg",
+      "caption": "",
+      "source": "Fresha",
+      "original_width": "1920px",
+      "original_height": "1378px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e1c470059065.jpeg",
+      "caption": "",
+      "source": "eddys-hair-salon-9nnd.croisa.com",
+      "original_width": "4368px",
+      "original_height": "2912px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a862eb1ed9f4.jpg",
+      "caption": "",
+      "source": "www.dirsalonfurniture.com",
+      "original_width": "2000px",
+      "original_height": "700px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ee7756c47713.jpg",
+      "caption": "",
+      "source": "TurboSquid",
+      "original_width": "1809px",
+      "original_height": "1080px"
+    }
+  ]
+}

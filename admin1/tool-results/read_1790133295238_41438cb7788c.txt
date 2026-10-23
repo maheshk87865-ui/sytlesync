@@ -1,0 +1,2002 @@
+     1→## Error Type
+     2→Console Error
+     3→
+     4→## Error Message
+     5→A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+     6→
+     7→- A server/client branch `if (typeof window !== 'undefined')`.
+     8→- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+     9→- Date formatting in a user's locale which doesn't match the server.
+    10→- External changing data without sending a snapshot of it along with the HTML.
+    11→- Invalid HTML tag nesting.
+    12→
+    13→It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+    14→
+    15→https://react.dev/link/hydration-mismatch
+    16→
+    17→  ...
+    18→    <RedirectBoundary>
+    19→      <RedirectErrorBoundary router={{...}}>
+    20→        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+    21→          <SegmentViewNode type="page" pagePath="page.tsx">
+    22→            <SegmentTrieNode>
+    23→            <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+    24→              <Home params={Promise} searchParams={Promise}>
+    25→                <div className="flex min-h...">
+    26→                  <SiteHeader>
+    27→                    <header className="sticky top...">
+    28→                      <div className="mx-auto fl...">
+    29→                        <button onClick={function onClick} className="shrink-0 r..." aria-label="StyleSync ...">
+    30→                          <StyleSyncLogo>
+    31→                            <div className="flex items...">
+    32→                              <div className="relative g...">
+    33→                                <svg
+    34→                                  viewBox="0 0 24 24"
+    35→                                  fill="none"
+    36→                                  className="h-1/2 w-1/2 text-white"
+    37→                                  stroke="currentColor"
+    38→                                  strokeWidth="2.2"
+    39→                                  strokeLinecap="round"
+    40→                                  strokeLinejoin="round"
+    41→                                  aria-hidden="true"
+    42→-                                 data-darkreader-inline-stroke=""
+    43→-                                 style={{--darkreader-inline-stroke:"currentColor"}}
+    44→                                >
+    45→                              <div className="flex flex-...">
+    46→                                <span
+    47→                                  className="font-bold tracking-tight text-lg"
+    48→                                  style={{
+    49→+                                   color: "oklch(0.32 0.055 156)"
+    50→-                                   color: "oklch(0.32 0.055 156)"
+    51→-                                   --darkreader-inline-color: "var(--darkreader-text-183b27, #cecac3)"
+    52→                                  }}
+    53→-                                 data-darkreader-inline-color=""
+    54→                                >
+    55→                                ...
+    56→                        ...
+    57→                          <Primitive.button.SlotClone type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+    58→                            <button className="hidden shr..." type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+    59→                              <MapPin className="h-3.5 w-3....">
+    60→                                <svg
+    61→                                  ref={null}
+    62→                                  xmlns="http://www.w3.org/2000/svg"
+    63→                                  width={24}
+    64→                                  height={24}
+    65→                                  viewBox="0 0 24 24"
+    66→                                  fill="none"
+    67→                                  stroke="currentColor"
+    68→                                  strokeWidth={2}
+    69→                                  strokeLinecap="round"
+    70→                                  strokeLinejoin="round"
+    71→                                  className="lucide lucide-map-pin h-3.5 w-3.5 text-primary"
+    72→                                  aria-hidden="true"
+    73→-                                 data-darkreader-inline-stroke=""
+    74→-                                 style={{--darkreader-inline-stroke:"currentColor"}}
+    75→                                >
+    76→                              ...
+    77→                        <div className="relative f...">
+    78→                          <Search className="pointer-ev...">
+    79→                            <svg
+    80→                              ref={null}
+    81→                              xmlns="http://www.w3.org/2000/svg"
+    82→                              width={24}
+    83→                              height={24}
+    84→                              viewBox="0 0 24 24"
+    85→                              fill="none"
+    86→                              stroke="currentColor"
+    87→                              strokeWidth={2}
+    88→                              strokeLinecap="round"
+    89→                              strokeLinejoin="round"
+    90→                              className="lucide lucide-search pointer-events-none absolute left-3 top-1/2 h-4 w-4 -tra..."
+    91→                              aria-hidden="true"
+    92→-                             data-darkreader-inline-stroke=""
+    93→-                             style={{--darkreader-inline-stroke:"currentColor"}}
+    94→                            >
+    95→                          ...
+    96→                        <div className="flex shrin...">
+    97→                          <Button variant="ghost" size="icon" className="relative h..." aria-label="Notifications">
+    98→                            <button data-slot="button" className={"inline-f..."} aria-label="Notifications">
+    99→                              <Bell className="h-4.5 w-4.5">
+   100→                                <svg
+   101→                                  ref={null}
+   102→                                  xmlns="http://www.w3.org/2000/svg"
+   103→                                  width={24}
+   104→                                  height={24}
+   105→                                  viewBox="0 0 24 24"
+   106→                                  fill="none"
+   107→                                  stroke="currentColor"
+   108→                                  strokeWidth={2}
+   109→                                  strokeLinecap="round"
+   110→                                  strokeLinejoin="round"
+   111→                                  className="lucide lucide-bell h-4.5 w-4.5"
+   112→                                  aria-hidden="true"
+   113→-                                 data-darkreader-inline-stroke=""
+   114→-                                 style={{--darkreader-inline-stroke:"currentColor"}}
+   115→                                >
+   116→                              ...
+   117→                          <Button variant="ghost" size="icon" className="hidden h-1..." aria-label="Saved salons" ...>
+   118→                            <button data-slot="button" className={"items-ce..."} aria-label="Saved salons" ...>
+   119→                              <Heart className="h-4.5 w-4.5">
+   120→                                <svg
+   121→                                  ref={null}
+   122→                                  xmlns="http://www.w3.org/2000/svg"
+   123→                                  width={24}
+   124→                                  height={24}
+   125→                                  viewBox="0 0 24 24"
+   126→                                  fill="none"
+   127→                                  stroke="currentColor"
+   128→                                  strokeWidth={2}
+   129→                                  strokeLinecap="round"
+   130→                                  strokeLinejoin="round"
+   131→                                  className="lucide lucide-heart h-4.5 w-4.5"
+   132→                                  aria-hidden="true"
+   133→-                                 data-darkreader-inline-stroke=""
+   134→-                                 style={{--darkreader-inline-stroke:"currentColor"}}
+   135→                                >
+   136→                          ...
+   137→                      ...
+   138→                  <main className="mx-auto w-...">
+   139→                    <HomeView>
+   140→                      <div className="space-y-8">
+   141→                        ...
+   142→                          <div className="relative g...">
+   143→                            <div>
+   144→                              <div className="inline-fle...">
+   145→                                <WandSparkles className="h-3 w-3">
+   146→                                  <svg
+   147→                                    ref={null}
+   148→                                    xmlns="http://www.w3.org/2000/svg"
+   149→                                    width={24}
+   150→                                    height={24}
+   151→                                    viewBox="0 0 24 24"
+   152→                                    fill="none"
+   153→                                    stroke="currentColor"
+   154→                                    strokeWidth={2}
+   155→                                    strokeLinecap="round"
+   156→                                    strokeLinejoin="round"
+   157→                                    className="lucide lucide-wand-sparkles h-3 w-3"
+   158→                                    aria-hidden="true"
+   159→-                                   data-darkreader-inline-stroke=""
+   160→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   161→                                  >
+   162→                                ...
+   163→                              <h2>
+   164→                              <p>
+   165→                              <div className="mt-5 flex ...">
+   166→                                <Button onClick={function onClick} size="lg" className="bg-white t...">
+   167→                                  <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   168→                                    <MessageSquare className="mr-2 h-4 w-4">
+   169→                                      <svg
+   170→                                        ref={null}
+   171→                                        xmlns="http://www.w3.org/2000/svg"
+   172→                                        width={24}
+   173→                                        height={24}
+   174→                                        viewBox="0 0 24 24"
+   175→                                        fill="none"
+   176→                                        stroke="currentColor"
+   177→                                        strokeWidth={2}
+   178→                                        strokeLinecap="round"
+   179→                                        strokeLinejoin="round"
+   180→                                        className="lucide lucide-message-square mr-2 h-4 w-4"
+   181→                                        aria-hidden="true"
+   182→-                                       data-darkreader-inline-stroke=""
+   183→-                                       style={{--darkreader-inline-stroke:"currentColor"}}
+   184→                                      >
+   185→                                    ...
+   186→                                <Button onClick={function onClick} size="lg" variant="outline" className="border-whi...">
+   187→                                  <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   188→                                    <Camera className="mr-2 h-4 w-4">
+   189→                                      <svg
+   190→                                        ref={null}
+   191→                                        xmlns="http://www.w3.org/2000/svg"
+   192→                                        width={24}
+   193→                                        height={24}
+   194→                                        viewBox="0 0 24 24"
+   195→                                        fill="none"
+   196→                                        stroke="currentColor"
+   197→                                        strokeWidth={2}
+   198→                                        strokeLinecap="round"
+   199→                                        strokeLinejoin="round"
+   200→                                        className="lucide lucide-camera mr-2 h-4 w-4"
+   201→                                        aria-hidden="true"
+   202→-                                       data-darkreader-inline-stroke=""
+   203→-                                       style={{--darkreader-inline-stroke:"currentColor"}}
+   204→                                      >
+   205→                                    ...
+   206→                              ...
+   207→                            <div className="relative r...">
+   208→                              <div className="flex items...">
+   209→                                <Sparkles className="h-3.5 w-3.5">
+   210→                                  <svg
+   211→                                    ref={null}
+   212→                                    xmlns="http://www.w3.org/2000/svg"
+   213→                                    width={24}
+   214→                                    height={24}
+   215→                                    viewBox="0 0 24 24"
+   216→                                    fill="none"
+   217→                                    stroke="currentColor"
+   218→                                    strokeWidth={2}
+   219→                                    strokeLinecap="round"
+   220→                                    strokeLinejoin="round"
+   221→                                    className="lucide lucide-sparkles h-3.5 w-3.5"
+   222→                                    aria-hidden="true"
+   223→-                                   data-darkreader-inline-stroke=""
+   224→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   225→                                  >
+   226→                                ...
+   227→                              <div>
+   228→                              <button onClick={function onClick} className="mt-3 inlin...">
+   229→                                <ArrowRight className="h-3 w-3">
+   230→                                  <svg
+   231→                                    ref={null}
+   232→                                    xmlns="http://www.w3.org/2000/svg"
+   233→                                    width={24}
+   234→                                    height={24}
+   235→                                    viewBox="0 0 24 24"
+   236→                                    fill="none"
+   237→                                    stroke="currentColor"
+   238→                                    strokeWidth={2}
+   239→                                    strokeLinecap="round"
+   240→                                    strokeLinejoin="round"
+   241→                                    className="lucide lucide-arrow-right h-3 w-3"
+   242→                                    aria-hidden="true"
+   243→-                                   data-darkreader-inline-stroke=""
+   244→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   245→                                  >
+   246→                        <ServiceCategories>
+   247→                          <section aria-labelledby="cats-heading">
+   248→                            <div className="mb-4 flex ...">
+   249→                              <div>
+   250→                              <button onClick={function onClick} className="inline-fle...">
+   251→                                <ChevronRight className="h-3.5 w-3.5">
+   252→                                  <svg
+   253→                                    ref={null}
+   254→                                    xmlns="http://www.w3.org/2000/svg"
+   255→                                    width={24}
+   256→                                    height={24}
+   257→                                    viewBox="0 0 24 24"
+   258→                                    fill="none"
+   259→                                    stroke="currentColor"
+   260→                                    strokeWidth={2}
+   261→                                    strokeLinecap="round"
+   262→                                    strokeLinejoin="round"
+   263→                                    className="lucide lucide-chevron-right h-3.5 w-3.5"
+   264→                                    aria-hidden="true"
+   265→-                                   data-darkreader-inline-stroke=""
+   266→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   267→                                  >
+   268→                            <div className="grid grid-..." role="list">
+   269→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   270→                                <div
+   271→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   272→                                  style={{
+   273→+                                   backgroundColor: "#0F3D2E14"
+   274→+                                   color: "#0F3D2E"
+   275→-                                   color: "rgb(15, 61, 46)"
+   276→-                                   background-color: "rgba(15, 61, 46, 0.08)"
+   277→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-0f3d2e14, rgba(12, 49, 3..."
+   278→-                                   --darkreader-inline-color: "var(--darkreader-text-0f3d2e, #d0ccc6)"
+   279→                                  }}
+   280→                                  aria-hidden="true"
+   281→-                                 data-darkreader-inline-bgcolor=""
+   282→-                                 data-darkreader-inline-color=""
+   283→                                >
+   284→                                  <Scissors className="h-6 w-6">
+   285→                                    <svg
+   286→                                      ref={null}
+   287→                                      xmlns="http://www.w3.org/2000/svg"
+   288→                                      width={24}
+   289→                                      height={24}
+   290→                                      viewBox="0 0 24 24"
+   291→                                      fill="none"
+   292→                                      stroke="currentColor"
+   293→                                      strokeWidth={2}
+   294→                                      strokeLinecap="round"
+   295→                                      strokeLinejoin="round"
+   296→                                      className="lucide lucide-scissors h-6 w-6"
+   297→                                      aria-hidden="true"
+   298→-                                     data-darkreader-inline-stroke=""
+   299→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   300→                                    >
+   301→                                ...
+   302→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   303→                                <div
+   304→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   305→                                  style={{
+   306→+                                   backgroundColor: "#2E7D5B14"
+   307→+                                   color: "#2E7D5B"
+   308→-                                   color: "rgb(46, 125, 91)"
+   309→-                                   background-color: "rgba(46, 125, 91, 0.08)"
+   310→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-2e7d5b14, rgba(37, 100, ..."
+   311→-                                   --darkreader-inline-color: "var(--darkreader-text-2e7d5b, #82d1af)"
+   312→                                  }}
+   313→                                  aria-hidden="true"
+   314→-                                 data-darkreader-inline-bgcolor=""
+   315→-                                 data-darkreader-inline-color=""
+   316→                                >
+   317→                                  <User className="h-6 w-6">
+   318→                                    <svg
+   319→                                      ref={null}
+   320→                                      xmlns="http://www.w3.org/2000/svg"
+   321→                                      width={24}
+   322→                                      height={24}
+   323→                                      viewBox="0 0 24 24"
+   324→                                      fill="none"
+   325→                                      stroke="currentColor"
+   326→                                      strokeWidth={2}
+   327→                                      strokeLinecap="round"
+   328→                                      strokeLinejoin="round"
+   329→                                      className="lucide lucide-user h-6 w-6"
+   330→                                      aria-hidden="true"
+   331→-                                     data-darkreader-inline-stroke=""
+   332→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   333→                                    >
+   334→                                ...
+   335→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   336→                                <div
+   337→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   338→                                  style={{
+   339→+                                   backgroundColor: "#5A9B7A14"
+   340→+                                   color: "#5A9B7A"
+   341→-                                   color: "rgb(90, 155, 122)"
+   342→-                                   background-color: "rgba(90, 155, 122, 0.08)"
+   343→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-5a9b7a14, rgba(72, 124, ..."
+   344→-                                   --darkreader-inline-color: "var(--darkreader-text-5a9b7a, #72ad8f)"
+   345→                                  }}
+   346→                                  aria-hidden="true"
+   347→-                                 data-darkreader-inline-bgcolor=""
+   348→-                                 data-darkreader-inline-color=""
+   349→                                >
+   350→                                  <Sparkles className="h-6 w-6">
+   351→                                    <svg
+   352→                                      ref={null}
+   353→                                      xmlns="http://www.w3.org/2000/svg"
+   354→                                      width={24}
+   355→                                      height={24}
+   356→                                      viewBox="0 0 24 24"
+   357→                                      fill="none"
+   358→                                      stroke="currentColor"
+   359→                                      strokeWidth={2}
+   360→                                      strokeLinecap="round"
+   361→                                      strokeLinejoin="round"
+   362→                                      className="lucide lucide-sparkles h-6 w-6"
+   363→                                      aria-hidden="true"
+   364→-                                     data-darkreader-inline-stroke=""
+   365→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   366→                                    >
+   367→                                ...
+   368→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   369→                                <div
+   370→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   371→                                  style={{
+   372→+                                   backgroundColor: "#7D5A2E14"
+   373→+                                   color: "#7D5A2E"
+   374→-                                   color: "rgb(125, 90, 46)"
+   375→-                                   background-color: "rgba(125, 90, 46, 0.08)"
+   376→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-7d5a2e14, rgba(100, 72, ..."
+   377→-                                   --darkreader-inline-color: "var(--darkreader-text-7d5a2e, #d1ae82)"
+   378→                                  }}
+   379→                                  aria-hidden="true"
+   380→-                                 data-darkreader-inline-bgcolor=""
+   381→-                                 data-darkreader-inline-color=""
+   382→                                >
+   383→                                  <Hand className="h-6 w-6">
+   384→                                    <svg
+   385→                                      ref={null}
+   386→                                      xmlns="http://www.w3.org/2000/svg"
+   387→                                      width={24}
+   388→                                      height={24}
+   389→                                      viewBox="0 0 24 24"
+   390→                                      fill="none"
+   391→                                      stroke="currentColor"
+   392→                                      strokeWidth={2}
+   393→                                      strokeLinecap="round"
+   394→                                      strokeLinejoin="round"
+   395→                                      className="lucide lucide-hand h-6 w-6"
+   396→                                      aria-hidden="true"
+   397→-                                     data-darkreader-inline-stroke=""
+   398→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   399→                                    >
+   400→                                ...
+   401→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   402→                                <div
+   403→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   404→                                  style={{
+   405→+                                   backgroundColor: "#7D2E5A14"
+   406→+                                   color: "#7D2E5A"
+   407→-                                   color: "rgb(125, 46, 90)"
+   408→-                                   background-color: "rgba(125, 46, 90, 0.08)"
+   409→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-7d2e5a14, rgba(100, 37, ..."
+   410→-                                   --darkreader-inline-color: "var(--darkreader-text-7d2e5a, #d182ae)"
+   411→                                  }}
+   412→                                  aria-hidden="true"
+   413→-                                 data-darkreader-inline-bgcolor=""
+   414→-                                 data-darkreader-inline-color=""
+   415→                                >
+   416→                                  <Palette className="h-6 w-6">
+   417→                                    <svg
+   418→                                      ref={null}
+   419→                                      xmlns="http://www.w3.org/2000/svg"
+   420→                                      width={24}
+   421→                                      height={24}
+   422→                                      viewBox="0 0 24 24"
+   423→                                      fill="none"
+   424→                                      stroke="currentColor"
+   425→                                      strokeWidth={2}
+   426→                                      strokeLinecap="round"
+   427→                                      strokeLinejoin="round"
+   428→                                      className="lucide lucide-palette h-6 w-6"
+   429→                                      aria-hidden="true"
+   430→-                                     data-darkreader-inline-stroke=""
+   431→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   432→                                    >
+   433→                                ...
+   434→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   435→                                <div
+   436→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   437→                                  style={{
+   438→+                                   backgroundColor: "#5A2E7D14"
+   439→+                                   color: "#5A2E7D"
+   440→-                                   color: "rgb(90, 46, 125)"
+   441→-                                   background-color: "rgba(90, 46, 125, 0.08)"
+   442→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-5a2e7d14, rgba(72, 37, 1..."
+   443→-                                   --darkreader-inline-color: "var(--darkreader-text-5a2e7d, #ae82d1)"
+   444→                                  }}
+   445→                                  aria-hidden="true"
+   446→-                                 data-darkreader-inline-bgcolor=""
+   447→-                                 data-darkreader-inline-color=""
+   448→                                >
+   449→                                  <Waves className="h-6 w-6">
+   450→                                    <svg
+   451→                                      ref={null}
+   452→                                      xmlns="http://www.w3.org/2000/svg"
+   453→                                      width={24}
+   454→                                      height={24}
+   455→                                      viewBox="0 0 24 24"
+   456→                                      fill="none"
+   457→                                      stroke="currentColor"
+   458→                                      strokeWidth={2}
+   459→                                      strokeLinecap="round"
+   460→                                      strokeLinejoin="round"
+   461→                                      className="lucide lucide-waves h-6 w-6"
+   462→                                      aria-hidden="true"
+   463→-                                     data-darkreader-inline-stroke=""
+   464→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   465→                                    >
+   466→                                ...
+   467→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   468→                                <div
+   469→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   470→                                  style={{
+   471→+                                   backgroundColor: "#3D2E0F14"
+   472→+                                   color: "#3D2E0F"
+   473→-                                   color: "rgb(61, 46, 15)"
+   474→-                                   background-color: "rgba(61, 46, 15, 0.08)"
+   475→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-3d2e0f14, rgba(49, 37, 1..."
+   476→-                                   --darkreader-inline-color: "var(--darkreader-text-3d2e0f, #d0ccc6)"
+   477→                                  }}
+   478→                                  aria-hidden="true"
+   479→-                                 data-darkreader-inline-bgcolor=""
+   480→-                                 data-darkreader-inline-color=""
+   481→                                >
+   482→                                  <Wind className="h-6 w-6">
+   483→                                    <svg
+   484→                                      ref={null}
+   485→                                      xmlns="http://www.w3.org/2000/svg"
+   486→                                      width={24}
+   487→                                      height={24}
+   488→                                      viewBox="0 0 24 24"
+   489→                                      fill="none"
+   490→                                      stroke="currentColor"
+   491→                                      strokeWidth={2}
+   492→                                      strokeLinecap="round"
+   493→                                      strokeLinejoin="round"
+   494→                                      className="lucide lucide-wind h-6 w-6"
+   495→                                      aria-hidden="true"
+   496→-                                     data-darkreader-inline-stroke=""
+   497→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   498→                                    >
+   499→                                ...
+   500→                              <button onClick={function onClick} role="listitem" className="group flex...">
+   501→                                <div
+   502→                                  className="grid h-12 w-12 place-items-center rounded-xl transition group-hover:scale..."
+   503→                                  style={{
+   504→+                                   backgroundColor: "#2E5A7D14"
+   505→+                                   color: "#2E5A7D"
+   506→-                                   color: "rgb(46, 90, 125)"
+   507→-                                   background-color: "rgba(46, 90, 125, 0.08)"
+   508→-                                   --darkreader-inline-bgcolor: "var(--darkreader-background-2e5a7d14, rgba(37, 72, 1..."
+   509→-                                   --darkreader-inline-color: "var(--darkreader-text-2e5a7d, #8fb7d6)"
+   510→                                  }}
+   511→                                  aria-hidden="true"
+   512→-                                 data-darkreader-inline-bgcolor=""
+   513→-                                 data-darkreader-inline-color=""
+   514→                                >
+   515→                                  <Crown className="h-6 w-6">
+   516→                                    <svg
+   517→                                      ref={null}
+   518→                                      xmlns="http://www.w3.org/2000/svg"
+   519→                                      width={24}
+   520→                                      height={24}
+   521→                                      viewBox="0 0 24 24"
+   522→                                      fill="none"
+   523→                                      stroke="currentColor"
+   524→                                      strokeWidth={2}
+   525→                                      strokeLinecap="round"
+   526→                                      strokeLinejoin="round"
+   527→                                      className="lucide lucide-crown h-6 w-6"
+   528→                                      aria-hidden="true"
+   529→-                                     data-darkreader-inline-stroke=""
+   530→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   531→                                    >
+   532→                                ...
+   533→                        ...
+   534→                          <div className="grid grid-...">
+   535→                            <div className="group rela...">
+   536→                              <div className="flex items...">
+   537→                                <div className="grid h-10 ...">
+   538→                                  <Scissors className="h-5 w-5">
+   539→                                    <svg
+   540→                                      ref={null}
+   541→                                      xmlns="http://www.w3.org/2000/svg"
+   542→                                      width={24}
+   543→                                      height={24}
+   544→                                      viewBox="0 0 24 24"
+   545→                                      fill="none"
+   546→                                      stroke="currentColor"
+   547→                                      strokeWidth={2}
+   548→                                      strokeLinecap="round"
+   549→                                      strokeLinejoin="round"
+   550→                                      className="lucide lucide-scissors h-5 w-5"
+   551→                                      aria-hidden="true"
+   552→-                                     data-darkreader-inline-stroke=""
+   553→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   554→                                    >
+   555→                                ...
+   556→                              <div>
+   557→                              <div className="mt-1 flex ...">
+   558→                                <Clock className="h-3 w-3">
+   559→                                  <svg
+   560→                                    ref={null}
+   561→                                    xmlns="http://www.w3.org/2000/svg"
+   562→                                    width={24}
+   563→                                    height={24}
+   564→                                    viewBox="0 0 24 24"
+   565→                                    fill="none"
+   566→                                    stroke="currentColor"
+   567→                                    strokeWidth={2}
+   568→                                    strokeLinecap="round"
+   569→                                    strokeLinejoin="round"
+   570→                                    className="lucide lucide-clock h-3 w-3"
+   571→                                    aria-hidden="true"
+   572→-                                   data-darkreader-inline-stroke=""
+   573→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   574→                                  >
+   575→                                ...
+   576→                              <div>
+   577→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   578→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   579→                                  <ArrowRight className="h-3.5 w-3.5">
+   580→                                    <svg
+   581→                                      ref={null}
+   582→                                      xmlns="http://www.w3.org/2000/svg"
+   583→                                      width={24}
+   584→                                      height={24}
+   585→                                      viewBox="0 0 24 24"
+   586→                                      fill="none"
+   587→                                      stroke="currentColor"
+   588→                                      strokeWidth={2}
+   589→                                      strokeLinecap="round"
+   590→                                      strokeLinejoin="round"
+   591→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   592→                                      aria-hidden="true"
+   593→-                                     data-darkreader-inline-stroke=""
+   594→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   595→                                    >
+   596→                            <div className="group rela...">
+   597→                              <div className="flex items...">
+   598→                                <div className="grid h-10 ...">
+   599→                                  <User className="h-5 w-5">
+   600→                                    <svg
+   601→                                      ref={null}
+   602→                                      xmlns="http://www.w3.org/2000/svg"
+   603→                                      width={24}
+   604→                                      height={24}
+   605→                                      viewBox="0 0 24 24"
+   606→                                      fill="none"
+   607→                                      stroke="currentColor"
+   608→                                      strokeWidth={2}
+   609→                                      strokeLinecap="round"
+   610→                                      strokeLinejoin="round"
+   611→                                      className="lucide lucide-user h-5 w-5"
+   612→                                      aria-hidden="true"
+   613→-                                     data-darkreader-inline-stroke=""
+   614→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   615→                                    >
+   616→                                ...
+   617→                              <div>
+   618→                              <div className="mt-1 flex ...">
+   619→                                <Clock className="h-3 w-3">
+   620→                                  <svg
+   621→                                    ref={null}
+   622→                                    xmlns="http://www.w3.org/2000/svg"
+   623→                                    width={24}
+   624→                                    height={24}
+   625→                                    viewBox="0 0 24 24"
+   626→                                    fill="none"
+   627→                                    stroke="currentColor"
+   628→                                    strokeWidth={2}
+   629→                                    strokeLinecap="round"
+   630→                                    strokeLinejoin="round"
+   631→                                    className="lucide lucide-clock h-3 w-3"
+   632→                                    aria-hidden="true"
+   633→-                                   data-darkreader-inline-stroke=""
+   634→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   635→                                  >
+   636→                                ...
+   637→                              <div>
+   638→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   639→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   640→                                  <ArrowRight className="h-3.5 w-3.5">
+   641→                                    <svg
+   642→                                      ref={null}
+   643→                                      xmlns="http://www.w3.org/2000/svg"
+   644→                                      width={24}
+   645→                                      height={24}
+   646→                                      viewBox="0 0 24 24"
+   647→                                      fill="none"
+   648→                                      stroke="currentColor"
+   649→                                      strokeWidth={2}
+   650→                                      strokeLinecap="round"
+   651→                                      strokeLinejoin="round"
+   652→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   653→                                      aria-hidden="true"
+   654→-                                     data-darkreader-inline-stroke=""
+   655→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   656→                                    >
+   657→                            <div className="group rela...">
+   658→                              <div className="flex items...">
+   659→                                <div className="grid h-10 ...">
+   660→                                  <Sparkles className="h-5 w-5">
+   661→                                    <svg
+   662→                                      ref={null}
+   663→                                      xmlns="http://www.w3.org/2000/svg"
+   664→                                      width={24}
+   665→                                      height={24}
+   666→                                      viewBox="0 0 24 24"
+   667→                                      fill="none"
+   668→                                      stroke="currentColor"
+   669→                                      strokeWidth={2}
+   670→                                      strokeLinecap="round"
+   671→                                      strokeLinejoin="round"
+   672→                                      className="lucide lucide-sparkles h-5 w-5"
+   673→                                      aria-hidden="true"
+   674→-                                     data-darkreader-inline-stroke=""
+   675→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   676→                                    >
+   677→                                ...
+   678→                              <div>
+   679→                              <div className="mt-1 flex ...">
+   680→                                <Clock className="h-3 w-3">
+   681→                                  <svg
+   682→                                    ref={null}
+   683→                                    xmlns="http://www.w3.org/2000/svg"
+   684→                                    width={24}
+   685→                                    height={24}
+   686→                                    viewBox="0 0 24 24"
+   687→                                    fill="none"
+   688→                                    stroke="currentColor"
+   689→                                    strokeWidth={2}
+   690→                                    strokeLinecap="round"
+   691→                                    strokeLinejoin="round"
+   692→                                    className="lucide lucide-clock h-3 w-3"
+   693→                                    aria-hidden="true"
+   694→-                                   data-darkreader-inline-stroke=""
+   695→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   696→                                  >
+   697→                                ...
+   698→                              <div>
+   699→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   700→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   701→                                  <ArrowRight className="h-3.5 w-3.5">
+   702→                                    <svg
+   703→                                      ref={null}
+   704→                                      xmlns="http://www.w3.org/2000/svg"
+   705→                                      width={24}
+   706→                                      height={24}
+   707→                                      viewBox="0 0 24 24"
+   708→                                      fill="none"
+   709→                                      stroke="currentColor"
+   710→                                      strokeWidth={2}
+   711→                                      strokeLinecap="round"
+   712→                                      strokeLinejoin="round"
+   713→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   714→                                      aria-hidden="true"
+   715→-                                     data-darkreader-inline-stroke=""
+   716→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   717→                                    >
+   718→                            <div className="group rela...">
+   719→                              <div className="flex items...">
+   720→                                <div className="grid h-10 ...">
+   721→                                  <Palette className="h-5 w-5">
+   722→                                    <svg
+   723→                                      ref={null}
+   724→                                      xmlns="http://www.w3.org/2000/svg"
+   725→                                      width={24}
+   726→                                      height={24}
+   727→                                      viewBox="0 0 24 24"
+   728→                                      fill="none"
+   729→                                      stroke="currentColor"
+   730→                                      strokeWidth={2}
+   731→                                      strokeLinecap="round"
+   732→                                      strokeLinejoin="round"
+   733→                                      className="lucide lucide-palette h-5 w-5"
+   734→                                      aria-hidden="true"
+   735→-                                     data-darkreader-inline-stroke=""
+   736→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   737→                                    >
+   738→                                ...
+   739→                              <div>
+   740→                              <div className="mt-1 flex ...">
+   741→                                <Clock className="h-3 w-3">
+   742→                                  <svg
+   743→                                    ref={null}
+   744→                                    xmlns="http://www.w3.org/2000/svg"
+   745→                                    width={24}
+   746→                                    height={24}
+   747→                                    viewBox="0 0 24 24"
+   748→                                    fill="none"
+   749→                                    stroke="currentColor"
+   750→                                    strokeWidth={2}
+   751→                                    strokeLinecap="round"
+   752→                                    strokeLinejoin="round"
+   753→                                    className="lucide lucide-clock h-3 w-3"
+   754→                                    aria-hidden="true"
+   755→-                                   data-darkreader-inline-stroke=""
+   756→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   757→                                  >
+   758→                                ...
+   759→                              <div>
+   760→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   761→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   762→                                  <ArrowRight className="h-3.5 w-3.5">
+   763→                                    <svg
+   764→                                      ref={null}
+   765→                                      xmlns="http://www.w3.org/2000/svg"
+   766→                                      width={24}
+   767→                                      height={24}
+   768→                                      viewBox="0 0 24 24"
+   769→                                      fill="none"
+   770→                                      stroke="currentColor"
+   771→                                      strokeWidth={2}
+   772→                                      strokeLinecap="round"
+   773→                                      strokeLinejoin="round"
+   774→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   775→                                      aria-hidden="true"
+   776→-                                     data-darkreader-inline-stroke=""
+   777→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   778→                                    >
+   779→                            <div className="group rela...">
+   780→                              <div className="flex items...">
+   781→                                <div className="grid h-10 ...">
+   782→                                  <Crown className="h-5 w-5">
+   783→                                    <svg
+   784→                                      ref={null}
+   785→                                      xmlns="http://www.w3.org/2000/svg"
+   786→                                      width={24}
+   787→                                      height={24}
+   788→                                      viewBox="0 0 24 24"
+   789→                                      fill="none"
+   790→                                      stroke="currentColor"
+   791→                                      strokeWidth={2}
+   792→                                      strokeLinecap="round"
+   793→                                      strokeLinejoin="round"
+   794→                                      className="lucide lucide-crown h-5 w-5"
+   795→                                      aria-hidden="true"
+   796→-                                     data-darkreader-inline-stroke=""
+   797→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   798→                                    >
+   799→                                ...
+   800→                              <div>
+   801→                              <div className="mt-1 flex ...">
+   802→                                <Clock className="h-3 w-3">
+   803→                                  <svg
+   804→                                    ref={null}
+   805→                                    xmlns="http://www.w3.org/2000/svg"
+   806→                                    width={24}
+   807→                                    height={24}
+   808→                                    viewBox="0 0 24 24"
+   809→                                    fill="none"
+   810→                                    stroke="currentColor"
+   811→                                    strokeWidth={2}
+   812→                                    strokeLinecap="round"
+   813→                                    strokeLinejoin="round"
+   814→                                    className="lucide lucide-clock h-3 w-3"
+   815→                                    aria-hidden="true"
+   816→-                                   data-darkreader-inline-stroke=""
+   817→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   818→                                  >
+   819→                                ...
+   820→                              <div>
+   821→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   822→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   823→                                  <ArrowRight className="h-3.5 w-3.5">
+   824→                                    <svg
+   825→                                      ref={null}
+   826→                                      xmlns="http://www.w3.org/2000/svg"
+   827→                                      width={24}
+   828→                                      height={24}
+   829→                                      viewBox="0 0 24 24"
+   830→                                      fill="none"
+   831→                                      stroke="currentColor"
+   832→                                      strokeWidth={2}
+   833→                                      strokeLinecap="round"
+   834→                                      strokeLinejoin="round"
+   835→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   836→                                      aria-hidden="true"
+   837→-                                     data-darkreader-inline-stroke=""
+   838→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   839→                                    >
+   840→                            <div className="group rela...">
+   841→                              <div className="flex items...">
+   842→                                <div className="grid h-10 ...">
+   843→                                  <Hand className="h-5 w-5">
+   844→                                    <svg
+   845→                                      ref={null}
+   846→                                      xmlns="http://www.w3.org/2000/svg"
+   847→                                      width={24}
+   848→                                      height={24}
+   849→                                      viewBox="0 0 24 24"
+   850→                                      fill="none"
+   851→                                      stroke="currentColor"
+   852→                                      strokeWidth={2}
+   853→                                      strokeLinecap="round"
+   854→                                      strokeLinejoin="round"
+   855→                                      className="lucide lucide-hand h-5 w-5"
+   856→                                      aria-hidden="true"
+   857→-                                     data-darkreader-inline-stroke=""
+   858→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   859→                                    >
+   860→                                ...
+   861→                              <div>
+   862→                              <div className="mt-1 flex ...">
+   863→                                <Clock className="h-3 w-3">
+   864→                                  <svg
+   865→                                    ref={null}
+   866→                                    xmlns="http://www.w3.org/2000/svg"
+   867→                                    width={24}
+   868→                                    height={24}
+   869→                                    viewBox="0 0 24 24"
+   870→                                    fill="none"
+   871→                                    stroke="currentColor"
+   872→                                    strokeWidth={2}
+   873→                                    strokeLinecap="round"
+   874→                                    strokeLinejoin="round"
+   875→                                    className="lucide lucide-clock h-3 w-3"
+   876→                                    aria-hidden="true"
+   877→-                                   data-darkreader-inline-stroke=""
+   878→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   879→                                  >
+   880→                                ...
+   881→                              <div>
+   882→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   883→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   884→                                  <ArrowRight className="h-3.5 w-3.5">
+   885→                                    <svg
+   886→                                      ref={null}
+   887→                                      xmlns="http://www.w3.org/2000/svg"
+   888→                                      width={24}
+   889→                                      height={24}
+   890→                                      viewBox="0 0 24 24"
+   891→                                      fill="none"
+   892→                                      stroke="currentColor"
+   893→                                      strokeWidth={2}
+   894→                                      strokeLinecap="round"
+   895→                                      strokeLinejoin="round"
+   896→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   897→                                      aria-hidden="true"
+   898→-                                     data-darkreader-inline-stroke=""
+   899→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   900→                                    >
+   901→                            <div className="group rela...">
+   902→                              <div className="flex items...">
+   903→                                <div className="grid h-10 ...">
+   904→                                  <Waves className="h-5 w-5">
+   905→                                    <svg
+   906→                                      ref={null}
+   907→                                      xmlns="http://www.w3.org/2000/svg"
+   908→                                      width={24}
+   909→                                      height={24}
+   910→                                      viewBox="0 0 24 24"
+   911→                                      fill="none"
+   912→                                      stroke="currentColor"
+   913→                                      strokeWidth={2}
+   914→                                      strokeLinecap="round"
+   915→                                      strokeLinejoin="round"
+   916→                                      className="lucide lucide-waves h-5 w-5"
+   917→                                      aria-hidden="true"
+   918→-                                     data-darkreader-inline-stroke=""
+   919→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   920→                                    >
+   921→                                ...
+   922→                              <div>
+   923→                              <div className="mt-1 flex ...">
+   924→                                <Clock className="h-3 w-3">
+   925→                                  <svg
+   926→                                    ref={null}
+   927→                                    xmlns="http://www.w3.org/2000/svg"
+   928→                                    width={24}
+   929→                                    height={24}
+   930→                                    viewBox="0 0 24 24"
+   931→                                    fill="none"
+   932→                                    stroke="currentColor"
+   933→                                    strokeWidth={2}
+   934→                                    strokeLinecap="round"
+   935→                                    strokeLinejoin="round"
+   936→                                    className="lucide lucide-clock h-3 w-3"
+   937→                                    aria-hidden="true"
+   938→-                                   data-darkreader-inline-stroke=""
+   939→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+   940→                                  >
+   941→                                ...
+   942→                              <div>
+   943→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+   944→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+   945→                                  <ArrowRight className="h-3.5 w-3.5">
+   946→                                    <svg
+   947→                                      ref={null}
+   948→                                      xmlns="http://www.w3.org/2000/svg"
+   949→                                      width={24}
+   950→                                      height={24}
+   951→                                      viewBox="0 0 24 24"
+   952→                                      fill="none"
+   953→                                      stroke="currentColor"
+   954→                                      strokeWidth={2}
+   955→                                      strokeLinecap="round"
+   956→                                      strokeLinejoin="round"
+   957→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+   958→                                      aria-hidden="true"
+   959→-                                     data-darkreader-inline-stroke=""
+   960→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   961→                                    >
+   962→                            <div className="group rela...">
+   963→                              <div className="flex items...">
+   964→                                <div className="grid h-10 ...">
+   965→                                  <Wind className="h-5 w-5">
+   966→                                    <svg
+   967→                                      ref={null}
+   968→                                      xmlns="http://www.w3.org/2000/svg"
+   969→                                      width={24}
+   970→                                      height={24}
+   971→                                      viewBox="0 0 24 24"
+   972→                                      fill="none"
+   973→                                      stroke="currentColor"
+   974→                                      strokeWidth={2}
+   975→                                      strokeLinecap="round"
+   976→                                      strokeLinejoin="round"
+   977→                                      className="lucide lucide-wind h-5 w-5"
+   978→                                      aria-hidden="true"
+   979→-                                     data-darkreader-inline-stroke=""
+   980→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+   981→                                    >
+   982→                                ...
+   983→                              <div>
+   984→                              <div className="mt-1 flex ...">
+   985→                                <Clock className="h-3 w-3">
+   986→                                  <svg
+   987→                                    ref={null}
+   988→                                    xmlns="http://www.w3.org/2000/svg"
+   989→                                    width={24}
+   990→                                    height={24}
+   991→                                    viewBox="0 0 24 24"
+   992→                                    fill="none"
+   993→                                    stroke="currentColor"
+   994→                                    strokeWidth={2}
+   995→                                    strokeLinecap="round"
+   996→                                    strokeLinejoin="round"
+   997→                                    className="lucide lucide-clock h-3 w-3"
+   998→                                    aria-hidden="true"
+   999→-                                   data-darkreader-inline-stroke=""
+  1000→-                                   style={{--darkreader-inline-stroke:"currentColor"}}
+  1001→                                  >
+  1002→                                ...
+  1003→                              <div>
+  1004→                              <Button size="sm" variant="secondary" className="mt-3 w-ful..." onClick={function onClick}>
+  1005→                                <button data-slot="button" className={"inline-f..."} onClick={function onClick}>
+  1006→                                  <ArrowRight className="h-3.5 w-3.5">
+  1007→                                    <svg
+  1008→                                      ref={null}
+  1009→                                      xmlns="http://www.w3.org/2000/svg"
+  1010→                                      width={24}
+  1011→                                      height={24}
+  1012→                                      viewBox="0 0 24 24"
+  1013→                                      fill="none"
+  1014→                                      stroke="currentColor"
+  1015→                                      strokeWidth={2}
+  1016→                                      strokeLinecap="round"
+  1017→                                      strokeLinejoin="round"
+  1018→                                      className="lucide lucide-arrow-right h-3.5 w-3.5"
+  1019→                                      aria-hidden="true"
+  1020→-                                     data-darkreader-inline-stroke=""
+  1021→-                                     style={{--darkreader-inline-stroke:"currentColor"}}
+  1022→                                    >
+  1023→                        <SalonCarousel title="Nearby salons" subtitle="Sorted by ..." cta={{label:"See...", ...}}>
+  1024→                          <section aria-labelledby="nearby-sal..." className="w-full ove...">
+  1025→                            ...
+  1026→                              <div className="hidden sm:...">
+  1027→                                <Button variant="outline" size="icon" className="h-8 w-8 ro..." ...>
+  1028→                                  <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1029→                                    <ChevronLeft className="h-4 w-4">
+  1030→                                      <svg
+  1031→                                        ref={null}
+  1032→                                        xmlns="http://www.w3.org/2000/svg"
+  1033→                                        width={24}
+  1034→                                        height={24}
+  1035→                                        viewBox="0 0 24 24"
+  1036→                                        fill="none"
+  1037→                                        stroke="currentColor"
+  1038→                                        strokeWidth={2}
+  1039→                                        strokeLinecap="round"
+  1040→                                        strokeLinejoin="round"
+  1041→                                        className="lucide lucide-chevron-left h-4 w-4"
+  1042→                                        aria-hidden="true"
+  1043→-                                       data-darkreader-inline-stroke=""
+  1044→-                                       style={{--darkreader-inline-stroke:"currentColor"}}
+  1045→                                      >
+  1046→                                <Button variant="outline" size="icon" className="h-8 w-8 ro..." ...>
+  1047→                                  <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1048→                                    <ChevronRight className="h-4 w-4">
+  1049→                                      <svg
+  1050→                                        ref={null}
+  1051→                                        xmlns="http://www.w3.org/2000/svg"
+  1052→                                        width={24}
+  1053→                                        height={24}
+  1054→                                        viewBox="0 0 24 24"
+  1055→                                        fill="none"
+  1056→                                        stroke="currentColor"
+  1057→                                        strokeWidth={2}
+  1058→                                        strokeLinecap="round"
+  1059→                                        strokeLinejoin="round"
+  1060→                                        className="lucide lucide-chevron-right h-4 w-4"
+  1061→                                        aria-hidden="true"
+  1062→-                                       data-darkreader-inline-stroke=""
+  1063→-                                       style={{--darkreader-inline-stroke:"currentColor"}}
+  1064→                                      >
+  1065→                            <div ref={{current:null}} className="flex gap-4..." style={{...}}>
+  1066→                              ...
+  1067→                                <article className="group rela...">
+  1068→                                  <div className="relative a...">
+  1069→                                    <div>
+  1070→                                    <img
+  1071→                                      alt={"Urban Groom — Modern men's grooming salon"}
+  1072→                                      fetchPriority={undefined}
+  1073→                                      loading="lazy"
+  1074→                                      width={undefined}
+  1075→                                      height={undefined}
+  1076→                                      decoding="async"
+  1077→                                      data-nimg="fill"
+  1078→                                      className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+  1079→                                      style={{
+  1080→+                                       position: "absolute"
+  1081→-                                       position: "absolute"
+  1082→+                                       height: "100%"
+  1083→-                                       height: "100%"
+  1084→+                                       width: "100%"
+  1085→-                                       width: "100%"
+  1086→+                                       left: 0
+  1087→-                                       left: "0px"
+  1088→+                                       top: 0
+  1089→-                                       top: "0px"
+  1090→+                                       right: 0
+  1091→-                                       right: "0px"
+  1092→+                                       bottom: 0
+  1093→-                                       bottom: "0px"
+  1094→+                                       objectFit: undefined
+  1095→+                                       objectPosition: undefined
+  1096→+                                       color: "transparent"
+  1097→-                                       color: "transparent"
+  1098→-                                       --darkreader-inline-color: "transparent"
+  1099→                                      }}
+  1100→                                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+  1101→                                      srcSet={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=256&q=75 256w, /_next/imag..."}
+  1102→                                      src={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=3840&q=75"}
+  1103→                                      ref={function}
+  1104→                                      onLoad={function onLoad}
+  1105→                                      onError={function onError}
+  1106→-                                     data-darkreader-inline-color=""
+  1107→                                    >
+  1108→                                    <div>
+  1109→                                    <button onClick={function onClick} aria-label="Save salon" className="absolute r...">
+  1110→                                      <Heart className="h-4 w-4 tr...">
+  1111→                                        <svg
+  1112→                                          ref={null}
+  1113→                                          xmlns="http://www.w3.org/2000/svg"
+  1114→                                          width={24}
+  1115→                                          height={24}
+  1116→                                          viewBox="0 0 24 24"
+  1117→                                          fill="none"
+  1118→                                          stroke="currentColor"
+  1119→                                          strokeWidth={2}
+  1120→                                          strokeLinecap="round"
+  1121→                                          strokeLinejoin="round"
+  1122→                                          className="lucide lucide-heart h-4 w-4 transition text-foreground/70"
+  1123→                                          aria-hidden="true"
+  1124→-                                         data-darkreader-inline-stroke=""
+  1125→-                                         style={{--darkreader-inline-stroke:"currentColor"}}
+  1126→                                        >
+  1127→                                  <div className="flex flex-...">
+  1128→                                    <div>
+  1129→                                    <div className="mt-2 flex ...">
+  1130→                                      <div className="flex items...">
+  1131→                                        <Star className="h-3.5 w-3....">
+  1132→                                          <svg
+  1133→                                            ref={null}
+  1134→                                            xmlns="http://www.w3.org/2000/svg"
+  1135→                                            width={24}
+  1136→                                            height={24}
+  1137→                                            viewBox="0 0 24 24"
+  1138→                                            fill="none"
+  1139→                                            stroke="currentColor"
+  1140→                                            strokeWidth={2}
+  1141→                                            strokeLinecap="round"
+  1142→                                            strokeLinejoin="round"
+  1143→                                            className="lucide lucide-star h-3.5 w-3.5 fill-amber-400 text-amber-400"
+  1144→                                            aria-hidden="true"
+  1145→-                                           data-darkreader-inline-stroke=""
+  1146→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1147→                                          >
+  1148→                                        ...
+  1149→                                      <div className="flex items...">
+  1150→                                        <MapPin className="h-3 w-3">
+  1151→                                          <svg
+  1152→                                            ref={null}
+  1153→                                            xmlns="http://www.w3.org/2000/svg"
+  1154→                                            width={24}
+  1155→                                            height={24}
+  1156→                                            viewBox="0 0 24 24"
+  1157→                                            fill="none"
+  1158→                                            stroke="currentColor"
+  1159→                                            strokeWidth={2}
+  1160→                                            strokeLinecap="round"
+  1161→                                            strokeLinejoin="round"
+  1162→                                            className="lucide lucide-map-pin h-3 w-3"
+  1163→                                            aria-hidden="true"
+  1164→-                                           data-darkreader-inline-stroke=""
+  1165→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1166→                                          >
+  1167→                                        ...
+  1168→                                      ...
+  1169→                                    <div className="mt-3 round...">
+  1170→                                      <div className="flex items...">
+  1171→                                        <span className="flex items...">
+  1172→                                          <Clock className="h-3 w-3">
+  1173→                                            <svg
+  1174→                                              ref={null}
+  1175→                                              xmlns="http://www.w3.org/2000/svg"
+  1176→                                              width={24}
+  1177→                                              height={24}
+  1178→                                              viewBox="0 0 24 24"
+  1179→                                              fill="none"
+  1180→                                              stroke="currentColor"
+  1181→                                              strokeWidth={2}
+  1182→                                              strokeLinecap="round"
+  1183→                                              strokeLinejoin="round"
+  1184→                                              className="lucide lucide-clock h-3 w-3"
+  1185→                                              aria-hidden="true"
+  1186→-                                             data-darkreader-inline-stroke=""
+  1187→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1188→                                            >
+  1189→                                          ...
+  1190→                                        <span className="flex items...">
+  1191→                                          <Calendar className="h-3 w-3">
+  1192→                                            <svg
+  1193→                                              ref={null}
+  1194→                                              xmlns="http://www.w3.org/2000/svg"
+  1195→                                              width={24}
+  1196→                                              height={24}
+  1197→                                              viewBox="0 0 24 24"
+  1198→                                              fill="none"
+  1199→                                              stroke="currentColor"
+  1200→                                              strokeWidth={2}
+  1201→                                              strokeLinecap="round"
+  1202→                                              strokeLinejoin="round"
+  1203→                                              className="lucide lucide-calendar h-3 w-3"
+  1204→                                              aria-hidden="true"
+  1205→-                                             data-darkreader-inline-stroke=""
+  1206→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1207→                                            >
+  1208→                                          ...
+  1209→                                      ...
+  1210→                                    <div className="mt-3 flex ...">
+  1211→                                      <Button>
+  1212→                                      <Button onClick={function onClick} variant="outline" size="sm" ...>
+  1213→                                        <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1214→                                          <Square className="h-4 w-4">
+  1215→                                            <svg
+  1216→                                              ref={null}
+  1217→                                              xmlns="http://www.w3.org/2000/svg"
+  1218→                                              width={24}
+  1219→                                              height={24}
+  1220→                                              viewBox="0 0 24 24"
+  1221→                                              fill="none"
+  1222→                                              stroke="currentColor"
+  1223→                                              strokeWidth={2}
+  1224→                                              strokeLinecap="round"
+  1225→                                              strokeLinejoin="round"
+  1226→                                              className="lucide lucide-square h-4 w-4"
+  1227→                                              aria-hidden="true"
+  1228→-                                             data-darkreader-inline-stroke=""
+  1229→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1230→                                            >
+  1231→                                          ...
+  1232→                                      <Button onClick={function handleOpen} variant="ghost" size="sm" ...>
+  1233→                                        <button data-slot="button" className={"inline-f..."} ...>
+  1234→                                          <ChevronRight className="h-4 w-4">
+  1235→                                            <svg
+  1236→                                              ref={null}
+  1237→                                              xmlns="http://www.w3.org/2000/svg"
+  1238→                                              width={24}
+  1239→                                              height={24}
+  1240→                                              viewBox="0 0 24 24"
+  1241→                                              fill="none"
+  1242→                                              stroke="currentColor"
+  1243→                                              strokeWidth={2}
+  1244→                                              strokeLinecap="round"
+  1245→                                              strokeLinejoin="round"
+  1246→                                              className="lucide lucide-chevron-right h-4 w-4"
+  1247→                                              aria-hidden="true"
+  1248→-                                             data-darkreader-inline-stroke=""
+  1249→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1250→                                            >
+  1251→                              ...
+  1252→                                <article className="group rela...">
+  1253→                                  <div className="relative a...">
+  1254→                                    <div>
+  1255→                                    <img
+  1256→                                      alt={"Royal Roots — Heritage barber & grooming lounge"}
+  1257→                                      fetchPriority={undefined}
+  1258→                                      loading="lazy"
+  1259→                                      width={undefined}
+  1260→                                      height={undefined}
+  1261→                                      decoding="async"
+  1262→                                      data-nimg="fill"
+  1263→                                      className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+  1264→                                      style={{
+  1265→+                                       position: "absolute"
+  1266→-                                       position: "absolute"
+  1267→+                                       height: "100%"
+  1268→-                                       height: "100%"
+  1269→+                                       width: "100%"
+  1270→-                                       width: "100%"
+  1271→+                                       left: 0
+  1272→-                                       left: "0px"
+  1273→+                                       top: 0
+  1274→-                                       top: "0px"
+  1275→+                                       right: 0
+  1276→-                                       right: "0px"
+  1277→+                                       bottom: 0
+  1278→-                                       bottom: "0px"
+  1279→+                                       objectFit: undefined
+  1280→+                                       objectPosition: undefined
+  1281→+                                       color: "transparent"
+  1282→-                                       color: "transparent"
+  1283→-                                       --darkreader-inline-color: "transparent"
+  1284→                                      }}
+  1285→                                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+  1286→                                      srcSet={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=256&q=75 256w, /_next/ima..."}
+  1287→                                      src={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=3840&q=75"}
+  1288→                                      ref={function}
+  1289→                                      onLoad={function onLoad}
+  1290→                                      onError={function onError}
+  1291→-                                     data-darkreader-inline-color=""
+  1292→                                    >
+  1293→                                    <div className="absolute l...">
+  1294→                                      <span>
+  1295→                                      <span className="inline-fle...">
+  1296→                                        <ShieldCheck className="h-3 w-3">
+  1297→                                          <svg
+  1298→                                            ref={null}
+  1299→                                            xmlns="http://www.w3.org/2000/svg"
+  1300→                                            width={24}
+  1301→                                            height={24}
+  1302→                                            viewBox="0 0 24 24"
+  1303→                                            fill="none"
+  1304→                                            stroke="currentColor"
+  1305→                                            strokeWidth={2}
+  1306→                                            strokeLinecap="round"
+  1307→                                            strokeLinejoin="round"
+  1308→                                            className="lucide lucide-shield-check h-3 w-3"
+  1309→                                            aria-hidden="true"
+  1310→-                                           data-darkreader-inline-stroke=""
+  1311→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1312→                                          >
+  1313→                                        ...
+  1314→                                    <button onClick={function onClick} aria-label="Unsave salon" ...>
+  1315→                                      <Heart className="h-4 w-4 tr...">
+  1316→                                        <svg
+  1317→                                          ref={null}
+  1318→                                          xmlns="http://www.w3.org/2000/svg"
+  1319→                                          width={24}
+  1320→                                          height={24}
+  1321→                                          viewBox="0 0 24 24"
+  1322→                                          fill="none"
+  1323→                                          stroke="currentColor"
+  1324→                                          strokeWidth={2}
+  1325→                                          strokeLinecap="round"
+  1326→                                          strokeLinejoin="round"
+  1327→                                          className="lucide lucide-heart h-4 w-4 transition fill-rose-500 text-rose-500"
+  1328→                                          aria-hidden="true"
+  1329→-                                         data-darkreader-inline-stroke=""
+  1330→-                                         style={{--darkreader-inline-stroke:"currentColor"}}
+  1331→                                        >
+  1332→                                  <div className="flex flex-...">
+  1333→                                    <div>
+  1334→                                    <div className="mt-2 flex ...">
+  1335→                                      <div className="flex items...">
+  1336→                                        <Star className="h-3.5 w-3....">
+  1337→                                          <svg
+  1338→                                            ref={null}
+  1339→                                            xmlns="http://www.w3.org/2000/svg"
+  1340→                                            width={24}
+  1341→                                            height={24}
+  1342→                                            viewBox="0 0 24 24"
+  1343→                                            fill="none"
+  1344→                                            stroke="currentColor"
+  1345→                                            strokeWidth={2}
+  1346→                                            strokeLinecap="round"
+  1347→                                            strokeLinejoin="round"
+  1348→                                            className="lucide lucide-star h-3.5 w-3.5 fill-amber-400 text-amber-400"
+  1349→                                            aria-hidden="true"
+  1350→-                                           data-darkreader-inline-stroke=""
+  1351→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1352→                                          >
+  1353→                                        ...
+  1354→                                      <div className="flex items...">
+  1355→                                        <MapPin className="h-3 w-3">
+  1356→                                          <svg
+  1357→                                            ref={null}
+  1358→                                            xmlns="http://www.w3.org/2000/svg"
+  1359→                                            width={24}
+  1360→                                            height={24}
+  1361→                                            viewBox="0 0 24 24"
+  1362→                                            fill="none"
+  1363→                                            stroke="currentColor"
+  1364→                                            strokeWidth={2}
+  1365→                                            strokeLinecap="round"
+  1366→                                            strokeLinejoin="round"
+  1367→                                            className="lucide lucide-map-pin h-3 w-3"
+  1368→                                            aria-hidden="true"
+  1369→-                                           data-darkreader-inline-stroke=""
+  1370→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1371→                                          >
+  1372→                                        ...
+  1373→                                      ...
+  1374→                                    <div className="mt-3 round...">
+  1375→                                      <div className="flex items...">
+  1376→                                        <span className="flex items...">
+  1377→                                          <Clock className="h-3 w-3">
+  1378→                                            <svg
+  1379→                                              ref={null}
+  1380→                                              xmlns="http://www.w3.org/2000/svg"
+  1381→                                              width={24}
+  1382→                                              height={24}
+  1383→                                              viewBox="0 0 24 24"
+  1384→                                              fill="none"
+  1385→                                              stroke="currentColor"
+  1386→                                              strokeWidth={2}
+  1387→                                              strokeLinecap="round"
+  1388→                                              strokeLinejoin="round"
+  1389→                                              className="lucide lucide-clock h-3 w-3"
+  1390→                                              aria-hidden="true"
+  1391→-                                             data-darkreader-inline-stroke=""
+  1392→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1393→                                            >
+  1394→                                          ...
+  1395→                                        <span className="flex items...">
+  1396→                                          <Calendar className="h-3 w-3">
+  1397→                                            <svg
+  1398→                                              ref={null}
+  1399→                                              xmlns="http://www.w3.org/2000/svg"
+  1400→                                              width={24}
+  1401→                                              height={24}
+  1402→                                              viewBox="0 0 24 24"
+  1403→                                              fill="none"
+  1404→                                              stroke="currentColor"
+  1405→                                              strokeWidth={2}
+  1406→                                              strokeLinecap="round"
+  1407→                                              strokeLinejoin="round"
+  1408→                                              className="lucide lucide-calendar h-3 w-3"
+  1409→                                              aria-hidden="true"
+  1410→-                                             data-darkreader-inline-stroke=""
+  1411→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1412→                                            >
+  1413→                                          ...
+  1414→                                      ...
+  1415→                                    <div className="mt-3 flex ...">
+  1416→                                      <Button>
+  1417→                                      <Button onClick={function onClick} variant="outline" size="sm" ...>
+  1418→                                        <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1419→                                          <Square className="h-4 w-4">
+  1420→                                            <svg
+  1421→                                              ref={null}
+  1422→                                              xmlns="http://www.w3.org/2000/svg"
+  1423→                                              width={24}
+  1424→                                              height={24}
+  1425→                                              viewBox="0 0 24 24"
+  1426→                                              fill="none"
+  1427→                                              stroke="currentColor"
+  1428→                                              strokeWidth={2}
+  1429→                                              strokeLinecap="round"
+  1430→                                              strokeLinejoin="round"
+  1431→                                              className="lucide lucide-square h-4 w-4"
+  1432→                                              aria-hidden="true"
+  1433→-                                             data-darkreader-inline-stroke=""
+  1434→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1435→                                            >
+  1436→                                          ...
+  1437→                                      <Button onClick={function handleOpen} variant="ghost" size="sm" ...>
+  1438→                                        <button data-slot="button" className={"inline-f..."} ...>
+  1439→                                          <ChevronRight className="h-4 w-4">
+  1440→                                            <svg
+  1441→                                              ref={null}
+  1442→                                              xmlns="http://www.w3.org/2000/svg"
+  1443→                                              width={24}
+  1444→                                              height={24}
+  1445→                                              viewBox="0 0 24 24"
+  1446→                                              fill="none"
+  1447→                                              stroke="currentColor"
+  1448→                                              strokeWidth={2}
+  1449→                                              strokeLinecap="round"
+  1450→                                              strokeLinejoin="round"
+  1451→                                              className="lucide lucide-chevron-right h-4 w-4"
+  1452→                                              aria-hidden="true"
+  1453→-                                             data-darkreader-inline-stroke=""
+  1454→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1455→                                            >
+  1456→                              ...
+  1457→                                <article className="group rela...">
+  1458→                                  <div className="relative a...">
+  1459→                                    <div>
+  1460→                                    <img
+  1461→                                      alt={"Premium Roots — Premium unisex salon & spa"}
+  1462→                                      fetchPriority={undefined}
+  1463→                                      loading="lazy"
+  1464→                                      width={undefined}
+  1465→                                      height={undefined}
+  1466→                                      decoding="async"
+  1467→                                      data-nimg="fill"
+  1468→                                      className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+  1469→                                      style={{
+  1470→+                                       position: "absolute"
+  1471→-                                       position: "absolute"
+  1472→+                                       height: "100%"
+  1473→-                                       height: "100%"
+  1474→+                                       width: "100%"
+  1475→-                                       width: "100%"
+  1476→+                                       left: 0
+  1477→-                                       left: "0px"
+  1478→+                                       top: 0
+  1479→-                                       top: "0px"
+  1480→+                                       right: 0
+  1481→-                                       right: "0px"
+  1482→+                                       bottom: 0
+  1483→-                                       bottom: "0px"
+  1484→+                                       objectFit: undefined
+  1485→+                                       objectPosition: undefined
+  1486→+                                       color: "transparent"
+  1487→-                                       color: "transparent"
+  1488→-                                       --darkreader-inline-color: "transparent"
+  1489→                                      }}
+  1490→                                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+  1491→                                      srcSet={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=256&q=75 256w, /_next/imag..."}
+  1492→                                      src={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=3840&q=75"}
+  1493→                                      ref={function}
+  1494→                                      onLoad={function onLoad}
+  1495→                                      onError={function onError}
+  1496→-                                     data-darkreader-inline-color=""
+  1497→                                    >
+  1498→                                    <div className="absolute l...">
+  1499→                                      <span>
+  1500→                                      <span className="inline-fle...">
+  1501→                                        <ShieldCheck className="h-3 w-3">
+  1502→                                          <svg
+  1503→                                            ref={null}
+  1504→                                            xmlns="http://www.w3.org/2000/svg"
+  1505→                                            width={24}
+  1506→                                            height={24}
+  1507→                                            viewBox="0 0 24 24"
+  1508→                                            fill="none"
+  1509→                                            stroke="currentColor"
+  1510→                                            strokeWidth={2}
+  1511→                                            strokeLinecap="round"
+  1512→                                            strokeLinejoin="round"
+  1513→                                            className="lucide lucide-shield-check h-3 w-3"
+  1514→                                            aria-hidden="true"
+  1515→-                                           data-darkreader-inline-stroke=""
+  1516→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1517→                                          >
+  1518→                                        ...
+  1519→                                    <button onClick={function onClick} aria-label="Unsave salon" ...>
+  1520→                                      <Heart className="h-4 w-4 tr...">
+  1521→                                        <svg
+  1522→                                          ref={null}
+  1523→                                          xmlns="http://www.w3.org/2000/svg"
+  1524→                                          width={24}
+  1525→                                          height={24}
+  1526→                                          viewBox="0 0 24 24"
+  1527→                                          fill="none"
+  1528→                                          stroke="currentColor"
+  1529→                                          strokeWidth={2}
+  1530→                                          strokeLinecap="round"
+  1531→                                          strokeLinejoin="round"
+  1532→                                          className="lucide lucide-heart h-4 w-4 transition fill-rose-500 text-rose-500"
+  1533→                                          aria-hidden="true"
+  1534→-                                         data-darkreader-inline-stroke=""
+  1535→-                                         style={{--darkreader-inline-stroke:"currentColor"}}
+  1536→                                        >
+  1537→                                  <div className="flex flex-...">
+  1538→                                    <div>
+  1539→                                    <div className="mt-2 flex ...">
+  1540→                                      <div className="flex items...">
+  1541→                                        <Star className="h-3.5 w-3....">
+  1542→                                          <svg
+  1543→                                            ref={null}
+  1544→                                            xmlns="http://www.w3.org/2000/svg"
+  1545→                                            width={24}
+  1546→                                            height={24}
+  1547→                                            viewBox="0 0 24 24"
+  1548→                                            fill="none"
+  1549→                                            stroke="currentColor"
+  1550→                                            strokeWidth={2}
+  1551→                                            strokeLinecap="round"
+  1552→                                            strokeLinejoin="round"
+  1553→                                            className="lucide lucide-star h-3.5 w-3.5 fill-amber-400 text-amber-400"
+  1554→                                            aria-hidden="true"
+  1555→-                                           data-darkreader-inline-stroke=""
+  1556→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1557→                                          >
+  1558→                                        ...
+  1559→                                      <div className="flex items...">
+  1560→                                        <MapPin className="h-3 w-3">
+  1561→                                          <svg
+  1562→                                            ref={null}
+  1563→                                            xmlns="http://www.w3.org/2000/svg"
+  1564→                                            width={24}
+  1565→                                            height={24}
+  1566→                                            viewBox="0 0 24 24"
+  1567→                                            fill="none"
+  1568→                                            stroke="currentColor"
+  1569→                                            strokeWidth={2}
+  1570→                                            strokeLinecap="round"
+  1571→                                            strokeLinejoin="round"
+  1572→                                            className="lucide lucide-map-pin h-3 w-3"
+  1573→                                            aria-hidden="true"
+  1574→-                                           data-darkreader-inline-stroke=""
+  1575→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1576→                                          >
+  1577→                                        ...
+  1578→                                      ...
+  1579→                                    <div className="mt-3 round...">
+  1580→                                      <div className="flex items...">
+  1581→                                        <span className="flex items...">
+  1582→                                          <Clock className="h-3 w-3">
+  1583→                                            <svg
+  1584→                                              ref={null}
+  1585→                                              xmlns="http://www.w3.org/2000/svg"
+  1586→                                              width={24}
+  1587→                                              height={24}
+  1588→                                              viewBox="0 0 24 24"
+  1589→                                              fill="none"
+  1590→                                              stroke="currentColor"
+  1591→                                              strokeWidth={2}
+  1592→                                              strokeLinecap="round"
+  1593→                                              strokeLinejoin="round"
+  1594→                                              className="lucide lucide-clock h-3 w-3"
+  1595→                                              aria-hidden="true"
+  1596→-                                             data-darkreader-inline-stroke=""
+  1597→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1598→                                            >
+  1599→                                          ...
+  1600→                                        <span className="flex items...">
+  1601→                                          <Calendar className="h-3 w-3">
+  1602→                                            <svg
+  1603→                                              ref={null}
+  1604→                                              xmlns="http://www.w3.org/2000/svg"
+  1605→                                              width={24}
+  1606→                                              height={24}
+  1607→                                              viewBox="0 0 24 24"
+  1608→                                              fill="none"
+  1609→                                              stroke="currentColor"
+  1610→                                              strokeWidth={2}
+  1611→                                              strokeLinecap="round"
+  1612→                                              strokeLinejoin="round"
+  1613→                                              className="lucide lucide-calendar h-3 w-3"
+  1614→                                              aria-hidden="true"
+  1615→-                                             data-darkreader-inline-stroke=""
+  1616→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1617→                                            >
+  1618→                                          ...
+  1619→                                      ...
+  1620→                                    <div className="mt-3 flex ...">
+  1621→                                      <Button>
+  1622→                                      <Button onClick={function onClick} variant="outline" size="sm" ...>
+  1623→                                        <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1624→                                          <Square className="h-4 w-4">
+  1625→                                            <svg
+  1626→                                              ref={null}
+  1627→                                              xmlns="http://www.w3.org/2000/svg"
+  1628→                                              width={24}
+  1629→                                              height={24}
+  1630→                                              viewBox="0 0 24 24"
+  1631→                                              fill="none"
+  1632→                                              stroke="currentColor"
+  1633→                                              strokeWidth={2}
+  1634→                                              strokeLinecap="round"
+  1635→                                              strokeLinejoin="round"
+  1636→                                              className="lucide lucide-square h-4 w-4"
+  1637→                                              aria-hidden="true"
+  1638→-                                             data-darkreader-inline-stroke=""
+  1639→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1640→                                            >
+  1641→                                          ...
+  1642→                                      <Button onClick={function handleOpen} variant="ghost" size="sm" ...>
+  1643→                                        <button data-slot="button" className={"inline-f..."} ...>
+  1644→                                          <ChevronRight className="h-4 w-4">
+  1645→                                            <svg
+  1646→                                              ref={null}
+  1647→                                              xmlns="http://www.w3.org/2000/svg"
+  1648→                                              width={24}
+  1649→                                              height={24}
+  1650→                                              viewBox="0 0 24 24"
+  1651→                                              fill="none"
+  1652→                                              stroke="currentColor"
+  1653→                                              strokeWidth={2}
+  1654→                                              strokeLinecap="round"
+  1655→                                              strokeLinejoin="round"
+  1656→                                              className="lucide lucide-chevron-right h-4 w-4"
+  1657→                                              aria-hidden="true"
+  1658→-                                             data-darkreader-inline-stroke=""
+  1659→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1660→                                            >
+  1661→                              ...
+  1662→                                <article className="group rela...">
+  1663→                                  <div className="relative a...">
+  1664→                                    <div>
+  1665→                                    <img
+  1666→                                      alt={"Elegance Studio — Facial, waxing & threading studio"}
+  1667→                                      fetchPriority={undefined}
+  1668→                                      loading="lazy"
+  1669→                                      width={undefined}
+  1670→                                      height={undefined}
+  1671→                                      decoding="async"
+  1672→                                      data-nimg="fill"
+  1673→                                      className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+  1674→                                      style={{
+  1675→+                                       position: "absolute"
+  1676→-                                       position: "absolute"
+  1677→+                                       height: "100%"
+  1678→-                                       height: "100%"
+  1679→+                                       width: "100%"
+  1680→-                                       width: "100%"
+  1681→+                                       left: 0
+  1682→-                                       left: "0px"
+  1683→+                                       top: 0
+  1684→-                                       top: "0px"
+  1685→+                                       right: 0
+  1686→-                                       right: "0px"
+  1687→+                                       bottom: 0
+  1688→-                                       bottom: "0px"
+  1689→+                                       objectFit: undefined
+  1690→+                                       objectPosition: undefined
+  1691→+                                       color: "transparent"
+  1692→-                                       color: "transparent"
+  1693→-                                       --darkreader-inline-color: "transparent"
+  1694→                                      }}
+  1695→                                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+  1696→                                      srcSet={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=256&q=75 256w, /_next/imag..."}
+  1697→                                      src={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=3840&q=75"}
+  1698→                                      ref={function}
+  1699→                                      onLoad={function onLoad}
+  1700→                                      onError={function onError}
+  1701→-                                     data-darkreader-inline-color=""
+  1702→                                    >
+  1703→                                    <div>
+  1704→                                    <button onClick={function onClick} aria-label="Save salon" className="absolute r...">
+  1705→                                      <Heart className="h-4 w-4 tr...">
+  1706→                                        <svg
+  1707→                                          ref={null}
+  1708→                                          xmlns="http://www.w3.org/2000/svg"
+  1709→                                          width={24}
+  1710→                                          height={24}
+  1711→                                          viewBox="0 0 24 24"
+  1712→                                          fill="none"
+  1713→                                          stroke="currentColor"
+  1714→                                          strokeWidth={2}
+  1715→                                          strokeLinecap="round"
+  1716→                                          strokeLinejoin="round"
+  1717→                                          className="lucide lucide-heart h-4 w-4 transition text-foreground/70"
+  1718→                                          aria-hidden="true"
+  1719→-                                         data-darkreader-inline-stroke=""
+  1720→-                                         style={{--darkreader-inline-stroke:"currentColor"}}
+  1721→                                        >
+  1722→                                  <div className="flex flex-...">
+  1723→                                    <div>
+  1724→                                    <div className="mt-2 flex ...">
+  1725→                                      <div className="flex items...">
+  1726→                                        <Star className="h-3.5 w-3....">
+  1727→                                          <svg
+  1728→                                            ref={null}
+  1729→                                            xmlns="http://www.w3.org/2000/svg"
+  1730→                                            width={24}
+  1731→                                            height={24}
+  1732→                                            viewBox="0 0 24 24"
+  1733→                                            fill="none"
+  1734→                                            stroke="currentColor"
+  1735→                                            strokeWidth={2}
+  1736→                                            strokeLinecap="round"
+  1737→                                            strokeLinejoin="round"
+  1738→                                            className="lucide lucide-star h-3.5 w-3.5 fill-amber-400 text-amber-400"
+  1739→                                            aria-hidden="true"
+  1740→-                                           data-darkreader-inline-stroke=""
+  1741→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1742→                                          >
+  1743→                                        ...
+  1744→                                      <div className="flex items...">
+  1745→                                        <MapPin className="h-3 w-3">
+  1746→                                          <svg
+  1747→                                            ref={null}
+  1748→                                            xmlns="http://www.w3.org/2000/svg"
+  1749→                                            width={24}
+  1750→                                            height={24}
+  1751→                                            viewBox="0 0 24 24"
+  1752→                                            fill="none"
+  1753→                                            stroke="currentColor"
+  1754→                                            strokeWidth={2}
+  1755→                                            strokeLinecap="round"
+  1756→                                            strokeLinejoin="round"
+  1757→                                            className="lucide lucide-map-pin h-3 w-3"
+  1758→                                            aria-hidden="true"
+  1759→-                                           data-darkreader-inline-stroke=""
+  1760→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1761→                                          >
+  1762→                                        ...
+  1763→                                      ...
+  1764→                                    <div className="mt-3 round...">
+  1765→                                      <div className="flex items...">
+  1766→                                        <span className="flex items...">
+  1767→                                          <Clock className="h-3 w-3">
+  1768→                                            <svg
+  1769→                                              ref={null}
+  1770→                                              xmlns="http://www.w3.org/2000/svg"
+  1771→                                              width={24}
+  1772→                                              height={24}
+  1773→                                              viewBox="0 0 24 24"
+  1774→                                              fill="none"
+  1775→                                              stroke="currentColor"
+  1776→                                              strokeWidth={2}
+  1777→                                              strokeLinecap="round"
+  1778→                                              strokeLinejoin="round"
+  1779→                                              className="lucide lucide-clock h-3 w-3"
+  1780→                                              aria-hidden="true"
+  1781→-                                             data-darkreader-inline-stroke=""
+  1782→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1783→                                            >
+  1784→                                          ...
+  1785→                                        <span className="flex items...">
+  1786→                                          <Calendar className="h-3 w-3">
+  1787→                                            <svg
+  1788→                                              ref={null}
+  1789→                                              xmlns="http://www.w3.org/2000/svg"
+  1790→                                              width={24}
+  1791→                                              height={24}
+  1792→                                              viewBox="0 0 24 24"
+  1793→                                              fill="none"
+  1794→                                              stroke="currentColor"
+  1795→                                              strokeWidth={2}
+  1796→                                              strokeLinecap="round"
+  1797→                                              strokeLinejoin="round"
+  1798→                                              className="lucide lucide-calendar h-3 w-3"
+  1799→                                              aria-hidden="true"
+  1800→-                                             data-darkreader-inline-stroke=""
+  1801→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1802→                                            >
+  1803→                                          ...
+  1804→                                      ...
+  1805→                                    <div className="mt-3 flex ...">
+  1806→                                      <Button>
+  1807→                                      <Button onClick={function onClick} variant="outline" size="sm" ...>
+  1808→                                        <button data-slot="button" className={"inline-f..."} onClick={function onClick} ...>
+  1809→                                          <Square className="h-4 w-4">
+  1810→                                            <svg
+  1811→                                              ref={null}
+  1812→                                              xmlns="http://www.w3.org/2000/svg"
+  1813→                                              width={24}
+  1814→                                              height={24}
+  1815→                                              viewBox="0 0 24 24"
+  1816→                                              fill="none"
+  1817→                                              stroke="currentColor"
+  1818→                                              strokeWidth={2}
+  1819→                                              strokeLinecap="round"
+  1820→                                              strokeLinejoin="round"
+  1821→                                              className="lucide lucide-square h-4 w-4"
+  1822→                                              aria-hidden="true"
+  1823→-                                             data-darkreader-inline-stroke=""
+  1824→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1825→                                            >
+  1826→                                          ...
+  1827→                                      <Button onClick={function handleOpen} variant="ghost" size="sm" ...>
+  1828→                                        <button data-slot="button" className={"inline-f..."} ...>
+  1829→                                          <ChevronRight className="h-4 w-4">
+  1830→                                            <svg
+  1831→                                              ref={null}
+  1832→                                              xmlns="http://www.w3.org/2000/svg"
+  1833→                                              width={24}
+  1834→                                              height={24}
+  1835→                                              viewBox="0 0 24 24"
+  1836→                                              fill="none"
+  1837→                                              stroke="currentColor"
+  1838→                                              strokeWidth={2}
+  1839→                                              strokeLinecap="round"
+  1840→                                              strokeLinejoin="round"
+  1841→                                              className="lucide lucide-chevron-right h-4 w-4"
+  1842→                                              aria-hidden="true"
+  1843→-                                             data-darkreader-inline-stroke=""
+  1844→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1845→                                            >
+  1846→                              ...
+  1847→                                <article className="group rela...">
+  1848→                                  <div className="relative a...">
+  1849→                                    <div>
+  1850→                                    <img
+  1851→                                      alt={"Kashmir Beauty Studio — Skin-first beauty & facial studio"}
+  1852→                                      fetchPriority={undefined}
+  1853→                                      loading="lazy"
+  1854→                                      width={undefined}
+  1855→                                      height={undefined}
+  1856→                                      decoding="async"
+  1857→                                      data-nimg="fill"
+  1858→                                      className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+  1859→                                      style={{
+  1860→+                                       position: "absolute"
+  1861→-                                       position: "absolute"
+  1862→+                                       height: "100%"
+  1863→-                                       height: "100%"
+  1864→+                                       width: "100%"
+  1865→-                                       width: "100%"
+  1866→+                                       left: 0
+  1867→-                                       left: "0px"
+  1868→+                                       top: 0
+  1869→-                                       top: "0px"
+  1870→+                                       right: 0
+  1871→-                                       right: "0px"
+  1872→+                                       bottom: 0
+  1873→-                                       bottom: "0px"
+  1874→+                                       objectFit: undefined
+  1875→+                                       objectPosition: undefined
+  1876→+                                       color: "transparent"
+  1877→-                                       color: "transparent"
+  1878→-                                       --darkreader-inline-color: "transparent"
+  1879→                                      }}
+  1880→                                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+  1881→                                      srcSet={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=256&q=75 256w, /_next/imag..."}
+  1882→                                      src={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=3840&q=75"}
+  1883→                                      ref={function}
+  1884→                                      onLoad={function onLoad}
+  1885→                                      onError={function onError}
+  1886→-                                     data-darkreader-inline-color=""
+  1887→                                    >
+  1888→                                    <div className="absolute l...">
+  1889→                                      <span>
+  1890→                                      <span className="inline-fle...">
+  1891→                                        <ShieldCheck className="h-3 w-3">
+  1892→                                          <svg
+  1893→                                            ref={null}
+  1894→                                            xmlns="http://www.w3.org/2000/svg"
+  1895→                                            width={24}
+  1896→                                            height={24}
+  1897→                                            viewBox="0 0 24 24"
+  1898→                                            fill="none"
+  1899→                                            stroke="currentColor"
+  1900→                                            strokeWidth={2}
+  1901→                                            strokeLinecap="round"
+  1902→                                            strokeLinejoin="round"
+  1903→                                            className="lucide lucide-shield-check h-3 w-3"
+  1904→                                            aria-hidden="true"
+  1905→-                                           data-darkreader-inline-stroke=""
+  1906→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1907→                                          >
+  1908→                                        ...
+  1909→                                    <button onClick={function onClick} aria-label="Save salon" className="absolute r...">
+  1910→                                      <Heart className="h-4 w-4 tr...">
+  1911→                                        <svg
+  1912→                                          ref={null}
+  1913→                                          xmlns="http://www.w3.org/2000/svg"
+  1914→                                          width={24}
+  1915→                                          height={24}
+  1916→                                          viewBox="0 0 24 24"
+  1917→                                          fill="none"
+  1918→                                          stroke="currentColor"
+  1919→                                          strokeWidth={2}
+  1920→                                          strokeLinecap="round"
+  1921→                                          strokeLinejoin="round"
+  1922→                                          className="lucide lucide-heart h-4 w-4 transition text-foreground/70"
+  1923→                                          aria-hidden="true"
+  1924→-                                         data-darkreader-inline-stroke=""
+  1925→-                                         style={{--darkreader-inline-stroke:"currentColor"}}
+  1926→                                        >
+  1927→                                  <div className="flex flex-...">
+  1928→                                    <div>
+  1929→                                    <div className="mt-2 flex ...">
+  1930→                                      <div className="flex items...">
+  1931→                                        <Star className="h-3.5 w-3....">
+  1932→                                          <svg
+  1933→                                            ref={null}
+  1934→                                            xmlns="http://www.w3.org/2000/svg"
+  1935→                                            width={24}
+  1936→                                            height={24}
+  1937→                                            viewBox="0 0 24 24"
+  1938→                                            fill="none"
+  1939→                                            stroke="currentColor"
+  1940→                                            strokeWidth={2}
+  1941→                                            strokeLinecap="round"
+  1942→                                            strokeLinejoin="round"
+  1943→                                            className="lucide lucide-star h-3.5 w-3.5 fill-amber-400 text-amber-400"
+  1944→                                            aria-hidden="true"
+  1945→-                                           data-darkreader-inline-stroke=""
+  1946→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1947→                                          >
+  1948→                                        ...
+  1949→                                      <div className="flex items...">
+  1950→                                        <MapPin className="h-3 w-3">
+  1951→                                          <svg
+  1952→                                            ref={null}
+  1953→                                            xmlns="http://www.w3.org/2000/svg"
+  1954→                                            width={24}
+  1955→                                            height={24}
+  1956→                                            viewBox="0 0 24 24"
+  1957→                                            fill="none"
+  1958→                                            stroke="currentColor"
+  1959→                                            strokeWidth={2}
+  1960→                                            strokeLinecap="round"
+  1961→                                            strokeLinejoin="round"
+  1962→                                            className="lucide lucide-map-pin h-3 w-3"
+  1963→                                            aria-hidden="true"
+  1964→-                                           data-darkreader-inline-stroke=""
+  1965→-                                           style={{--darkreader-inline-stroke:"currentColor"}}
+  1966→                                          >
+  1967→                                        ...
+  1968→                                      ...
+  1969→                                    <div className="mt-3 round...">
+  1970→                                      <div className="flex items...">
+  1971→                                        <span className="flex items...">
+  1972→                                          <Clock className="h-3 w-3">
+  1973→                                            <svg
+  1974→                                              ref={null}
+  1975→                                              xmlns="http://www.w3.org/2000/svg"
+  1976→                                              width={24}
+  1977→                                              height={24}
+  1978→                                              viewBox="0 0 24 24"
+  1979→                                              fill="none"
+  1980→                                              stroke="currentColor"
+  1981→                                              strokeWidth={2}
+  1982→                                              strokeLinecap="round"
+  1983→                                              strokeLinejoin="round"
+  1984→                                              className="lucide lucide-clock h-3 w-3"
+  1985→                                              aria-hidden="true"
+  1986→-                                             data-darkreader-inline-stroke=""
+  1987→-                                             style={{--darkreader-inline-stroke:"currentColor"}}
+  1988→                                            >
+  1989→                                          ...
+  1990→                                        <span className="flex items...">
+  1991→                                          <Calendar className="h-3 w-3">
+  1992→                                            <svg
+  1993→                                              ref={null}
+  1994→                                              xmlns="http://www.w3.org/2000/svg"
+  1995→                                              width={24}
+  1996→                                              height={24}
+  1997→                                              viewBox="0 0 24 24"
+  1998→                                              fill="none"
+  1999→                                              stroke="currentColor"
+  2000→                                              strokeWidth={2}
+
+[showing lines 1-2000 of 6886; use offset=2001 with limit to continue reading]

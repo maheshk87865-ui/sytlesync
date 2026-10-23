@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "wide modern luxury hair salon interior with styling chairs mirrors and warm lighting landscape"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "wide modern luxury hair salon interior with styling chairs mirrors and warm lighting landscape",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d8f1a7efe365.jpg",
+      "caption": "",
+      "source": "Wipro Consumer Lighting",
+      "original_width": "4032px",
+      "original_height": "2688px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1f82f911fb42.jpg",
+      "caption": "",
+      "source": "Alibaba.com",
+      "original_width": "1920px",
+      "original_height": "1920px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/45b9c4092cb8.jpg",
+      "caption": "",
+      "source": "Forbes",
+      "original_width": "1200px",
+      "original_height": "1798px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1519c9b5346d.jpg",
+      "caption": "",
+      "source": "Freedom Room",
+      "original_width": "1800px",
+      "original_height": "1008px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8e8fc3a22e12.jpg",
+      "caption": "",
+      "source": "Homedit",
+      "original_width": "800px",
+      "original_height": "1077px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7c86b4164601.jpeg",
+      "caption": "",
+      "source": "Rady Interior",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    }
+  ]
+}

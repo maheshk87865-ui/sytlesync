@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # 1. Authoritative Backend (Express + SQLite / PostgreSQL)
+  backend:
+    build:
+      context: ../admin1/backend
+      dockerfile: Dockerfile
+    container_name: stylesync-backend-prod
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - DATABASE_URL=file:/data/stylesync.db
+      - CORS_ORIGINS=http://localhost:3000,http://localhost:3001,http://localhost:3002
+      - JWT_SECRET=stylesync_super_secret_production_key_change_in_prod
+      - AI_MODE=real
+    volumes:
+      - stylesync-data:/data
+
+volumes:
+  stylesync-data:

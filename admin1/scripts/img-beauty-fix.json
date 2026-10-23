@@ -1,0 +1,47 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "modern beauty facial treatment room with clean elegant interior and skincare products"
+✅ Got 5 images
+{
+  "success": true,
+  "query": "modern beauty facial treatment room with clean elegant interior and skincare products",
+  "count": 5,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7c24d63e6352.jpg",
+      "caption": "",
+      "source": "Yelp",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/29cc49705fff.jpg",
+      "caption": "",
+      "source": "dailyhabitsmia.com",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1f54f131e7d6.jpg",
+      "caption": "",
+      "source": "dailyhabitsmia.com",
+      "original_width": "1100px",
+      "original_height": "1650px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ec4a3ac51d0e.jpg",
+      "caption": "",
+      "source": "Yelp",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a931b395ed6b.jpg",
+      "caption": "",
+      "source": "www.rejuverie.com",
+      "original_width": "1280px",
+      "original_height": "720px"
+    }
+  ]
+}

@@ -1,0 +1,651 @@
+// ============================================================
+// StyleSync Customer App — Prisma Schema
+// ------------------------------------------------------------
+// Backend database schema for the StyleSync CUSTOMER-facing app.
+// All salon / service / staff / availability tables are stored here
+// because the customer app needs to read that data — but this
+// backend implementation focuses on CUSTOMER-side APIs only.
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users (authentication records) ───────────────────────────
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  phone         String?   @unique
+  role          String    @default("CUSTOMER") // CUSTOMER | SALON_OWNER | ADMIN (server-set only)
+  status        String    @default("active") // active | suspended | deleted | pending_verification
+  lastLoginAt   DateTime? @map("last_login_at")
+  emailVerified Boolean   @default(false) @map("email_verified")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  credential              AuthCredential?
+  profile                 UserProfile?
+  preferences             CustomerPreferences?
+  passwordResets          PasswordResetToken[]
+  refreshTokens           RefreshToken[]
+  emailVerificationTokens EmailVerificationToken[]
+  customer                Customer?
+
+  @@index([email])
+  @@index([phone])
+  @@map("users")
+}
+
+model AuthCredential {
+  id           String   @id @default(uuid())
+  userId       String   @unique @map("user_id")
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("auth_credentials")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  token     String   @unique
+  expiresAt DateTime @map("expires_at")
+  revoked   Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  token     String    @unique
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("password_reset_tokens")
+}
+
+model EmailVerificationToken {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  token     String   @unique
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("email_verification_tokens")
+}
+
+// ─── Customer Profile (extended personal info) ──────────────
+model UserProfile {
+  id           String    @id @default(uuid())
+  userId       String    @unique @map("user_id")
+  fullName     String    @map("full_name")
+  profileImage String?   @map("profile_image")
+  phone        String?
+  email        String
+  dateOfBirth  DateTime? @map("date_of_birth") @db.Date
+  gender       String? // male | female | other | prefer_not_to_say
+  city         String?
+  area         String?
+  latitude     Float?
+  longitude    Float?
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("customer_profiles")
+}
+
+// ─── Customer Preferences (AI recommendation inputs) ─────────
+model CustomerPreferences {
+  id                    String   @id @default(uuid())
+  userId                String   @unique @map("user_id")
+  preferredServices     String[] @default([]) @map("preferred_services")
+  preferredCategories   String[] @default([]) @map("preferred_categories")
+  budgetRange           String?  @map("budget_range") // $ | $$ | $$$
+  maintenancePreference String?  @map("maintenance_preference") // Low | Medium | High
+  occasionPreferences   String[] @default([]) @map("occasion_preferences") // daily | office | wedding | party | date | event | casual
+  preferredSalonTypes   String[] @default([]) @map("preferred_salon_types") // unisex | men | women | luxury
+  preferredStaff        String[] @default([]) @map("preferred_staff") // staff IDs
+  locationPreference    String?  @map("location_preference") // city or area name
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("customer_preferences")
+}
+
+// ─── Customers (legacy — kept for backward compatibility with bookings) ───
+model Customer {
+  id                String   @id @default(uuid())
+  authId            String   @unique @map("auth_id")
+  userId            String?  @unique @map("user_id") // links to new User model
+  email             String   @unique
+  name              String
+  mobile            String?
+  city              String?
+  preferredServices String[] @default([]) @map("preferred_services")
+  avatarUrl         String?  @map("avatar_url")
+  memberSince       DateTime @default(now()) @map("member_since")
+  latitude          Float?
+  longitude         Float?
+  isPublished       Boolean  @default(true) @map("is_published")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  stats          CustomerStat?
+  bookings       Booking[]
+  reviews        Review[]
+  favorites      Favorite[]
+  paymentMethods PaymentMethod[]
+  notifications  Notification[]
+  supportTickets SupportTicket[]
+  savedLooks     SavedLook[]
+  photos         CustomerPhoto[]
+  aiInteractions AiInteraction[]
+  auditLogs      AuditLog[]
+
+  @@index([userId])
+  @@map("customers")
+}
+
+model CustomerStat {
+  customerId  String   @id @map("customer_id")
+  bookings    Int      @default(0)
+  completed   Int      @default(0)
+  savedSalons Int      @default(0) @map("saved_salons")
+  savedLooks  Int      @default(0) @map("saved_looks")
+  reviewCount Int      @default(0) @map("reviews_count")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@map("customer_stats")
+}
+
+// ─── Salon Catalog (read by customer app) ─────────────────────
+model Salon {
+  id                 String   @id @default(uuid())
+  name               String
+  tagline            String?
+  description        String?
+  category           String
+  logo               String? // salon logo image URL
+  coverImage         String?  @map("cover_image")
+  gallery            String[] @default([])
+  rating             Float    @default(0)
+  reviewCount        Int      @default(0) @map("reviews_count")
+  distanceKm         Float    @default(0) @map("distance_km")
+  priceFrom          Int      @default(0) @map("price_from")
+  openUntil          String?  @map("open_until")
+  isOpen             Boolean  @default(true) @map("is_open")
+  verified           Boolean  @default(false)
+  status             String   @default("active") // active | closed | temporarily_closed
+  openingHours       Json?    @map("opening_hours") // { mon: { open: "09:00", close: "21:00" }, ... }
+  amenities          String[] @default([])
+  address            String?
+  area               String?
+  cancellationPolicy String?  @map("cancellation_policy")
+  city               String?
+  latitude           Float?
+  longitude          Float?
+  isPublished        Boolean  @default(true) @map("is_published")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  services     SalonService[]
+  staff        StaffMember[]
+  availability AvailabilitySlot[]
+  bookings     Booking[]
+  reviews      Review[]
+  favorites    Favorite[]
+  salonRating  SalonRating?
+
+  @@index([category])
+  @@index([city])
+  @@index([area])
+  @@index([status])
+  @@index([verified])
+  @@index([isPublished])
+  @@map("salons")
+}
+
+model ServiceCategory {
+  id          String  @id
+  name        String  @unique
+  description String?
+  icon        String?
+  tint        String?
+
+  @@map("service_categories")
+}
+
+// ─── Master Service Catalog (global service definitions) ─────
+// Defines all possible services in the system. A salon offers
+// a service via the SalonService junction table below.
+model Service {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  category        String // Hair | Beard & Grooming | Skin & Beauty | Nails | Makeup | Other
+  description     String?
+  image           String?
+  defaultDuration Int?     @map("default_duration") // minutes
+  status          String   @default("active") // active | inactive
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  salonServices SalonService[]
+
+  @@index([category])
+  @@index([status])
+  @@map("services")
+}
+
+model SalonService {
+  id            String   @id @default(uuid())
+  salonId       String   @map("salon_id")
+  serviceId     String?  @map("service_id") // links to master Service catalog (optional for backward compat)
+  name          String // salon-specific service name (may differ from master)
+  description   String?
+  category      String
+  durationMin   Int      @map("duration_min")
+  durationLabel String   @map("duration_label")
+  priceFrom     Int      @map("price_from")
+  priceTo       Int?     @map("price_to")
+  rating        Float    @default(0)
+  reviewCount   Int      @default(0) @map("reviews_count")
+  imageUrl      String?  @map("image_url")
+  whatsIncluded String[] @default([]) @map("whats_included")
+  popular       Boolean  @default(false)
+  status        String   @default("active") // active | inactive | seasonal
+  isPublished   Boolean  @default(true) @map("is_published")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  salon        Salon              @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  service      Service?           @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  availability AvailabilitySlot[]
+
+  @@index([salonId])
+  @@index([serviceId])
+  @@index([category])
+  @@index([popular])
+  @@index([status])
+  @@map("salon_services")
+}
+
+model StaffMember {
+  id              String   @id @default(uuid())
+  salonId         String   @map("salon_id")
+  name            String
+  role            String
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0) @map("reviews_count")
+  avatarColor     String?  @map("avatar_color")
+  initials        String?
+  yearsExperience Int      @default(0) @map("years_experience")
+  bio             String?
+  specializations String[] @default([])
+  workingHours    Json     @map("working_hours")
+  breaks          Json     @default("[]")
+  daysOff         Int[]    @default([]) @map("days_off")
+  serviceIds      String[] @default([]) @map("service_ids")
+  isPublished     Boolean  @default(true) @map("is_published")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  salon        Salon              @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  availability AvailabilitySlot[]
+
+  @@index([salonId])
+  @@map("staff_members")
+}
+
+model AvailabilitySlot {
+  id          String    @id @default(uuid())
+  salonId     String    @map("salon_id")
+  staffId     String?   @map("staff_id")
+  serviceId   String?   @map("service_id")
+  date        DateTime  @db.Date
+  startTime   String    @map("start_time") // "09:00"
+  endTime     String    @map("end_time") // "09:30"
+  durationMin Int       @default(30) @map("duration_min")
+  time        String // legacy field — same as startTime
+  status      String    @default("AVAILABLE") // AVAILABLE | BOOKED | BLOCKED | BREAK | UNAVAILABLE | HELD
+  holdId      String?   @map("hold_id") // linked SlotHold if status=HELD
+  heldUntil   DateTime? @map("held_until") // when the hold expires
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  salon   Salon         @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  staff   StaffMember?  @relation(fields: [staffId], references: [id], onDelete: SetNull)
+  service SalonService? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  hold    SlotHold?     @relation("SlotToHold")
+
+  @@unique([salonId, staffId, date, startTime])
+  @@index([salonId, date])
+  @@index([staffId, date])
+  @@index([status])
+  @@index([salonId, date, status])
+  @@map("availability_slots")
+}
+
+// ─── Slot Holds (temporary reservation during booking) ──────
+model SlotHold {
+  id          String    @id @default(uuid())
+  slotId      String    @unique @map("slot_id")
+  customerId  String    @map("customer_id")
+  salonId     String    @map("salon_id")
+  staffId     String?   @map("staff_id")
+  serviceId   String?   @map("service_id")
+  date        DateTime  @db.Date
+  startTime   String    @map("start_time")
+  endTime     String    @map("end_time")
+  status      String    @default("HELD") // HELD | RELEASED | EXPIRED | CONFIRMED
+  expiresAt   DateTime  @map("expires_at")
+  confirmedAt DateTime? @map("confirmed_at")
+  releasedAt  DateTime? @map("released_at")
+  bookingId   String?   @map("booking_id") // set when booking is confirmed
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  slot AvailabilitySlot @relation("SlotToHold", fields: [slotId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+  @@index([slotId])
+  @@index([status])
+  @@index([expiresAt])
+  @@map("slot_holds")
+}
+
+// ─── Bookings ─────────────────────────────────────────────────
+model Booking {
+  id                 String    @id @default(uuid())
+  bookingId          String    @unique @map("booking_id")
+  customerId         String    @map("customer_id")
+  salonId            String    @map("salon_id")
+  serviceId          String?   @map("service_id")
+  staffId            String?   @map("staff_id")
+  slotId             String?   @map("slot_id")
+  holdId             String?   @map("hold_id")
+  serviceName        String    @map("service_name")
+  staffName          String?   @map("staff_name")
+  salonName          String    @map("salon_name")
+  date               DateTime  @db.Date
+  time               String // legacy — same as startTime
+  startTime          String    @map("start_time") // "10:00"
+  endTime            String?   @map("end_time") // "10:30"
+  duration           Int       @default(30) // minutes
+  durationLabel      String?   @map("duration_label")
+  price              Int // server-retrieved, never frontend
+  status             String    @default("CONFIRMED") // PENDING | CONFIRMED | COMPLETED | CANCELLED | EXPIRED
+  paymentStatus      String    @default("pending") @map("payment_status") // pending | paid | refunded | failed
+  paymentMethod      String?   @map("payment_method")
+  cancellationPolicy String?   @map("cancellation_policy")
+  notes              String?
+  cancelledAt        DateTime? @map("cancelled_at")
+  completedAt        DateTime? @map("completed_at")
+  cancelledReason    String?   @map("cancelled_reason")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon    Salon    @relation(fields: [salonId], references: [id], onDelete: Restrict)
+  review   Review?
+  payment  Payment?
+
+  @@index([customerId, date])
+  @@index([bookingId])
+  @@index([salonId, date])
+  @@index([status])
+  @@index([customerId, status])
+  @@index([staffId, date, startTime])
+  @@map("bookings")
+}
+
+// ─── Payments ─────────────────────────────────────────────────
+model Payment {
+  id                 String    @id @default(uuid())
+  bookingId          String    @unique @map("booking_id")
+  customerId         String    @map("customer_id")
+  amount             Int // server-calculated, in paise (₹1 = 100 paise)
+  currency           String    @default("INR")
+  provider           String    @default("demo") // razorpay | stripe | demo
+  providerOrderId    String?   @unique @map("provider_order_id") // order ID from the payment provider
+  providerPaymentId  String?   @unique @map("provider_payment_id") // payment ID returned by provider on success
+  providerSignature  String?   @map("provider_signature") // webhook signature for verification
+  status             String    @default("CREATED") // CREATED | PENDING | PAID | FAILED | REFUNDED | PARTIALLY_REFUNDED
+  method             String? // upi | card | wallet | netbanking
+  refundAmount       Int       @default(0) @map("refund_amount")
+  refundId           String?   @unique @map("refund_id")
+  failureReason      String?   @map("failure_reason")
+  webhookProcessedAt DateTime? @map("webhook_processed_at")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+  @@index([bookingId])
+  @@index([status])
+  @@index([providerOrderId])
+  @@index([providerPaymentId])
+  @@map("payments")
+}
+
+// ─── Reviews ──────────────────────────────────────────────────
+model Review {
+  id           String    @id @default(uuid())
+  customerId   String    @map("customer_id")
+  customerName String    @map("customer_name")
+  salonId      String    @map("salon_id")
+  bookingId    String?   @unique @map("booking_id")
+  serviceId    String?   @map("service_id")
+  staffId      String?   @map("staff_id")
+  serviceName  String?   @map("service_name")
+  staffName    String?   @map("staff_name")
+  rating       Int // 1..5
+  text         String
+  reply        String?
+  editedAt     DateTime? @map("edited_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon    Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  booking  Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@index([salonId, createdAt])
+  @@index([customerId])
+  @@index([rating])
+  @@map("reviews")
+}
+
+// ─── Salon Rating Cache (computed from reviews) ───────────────
+model SalonRating {
+  salonId       String   @id @map("salon_id")
+  averageRating Float    @map("average_rating")
+  reviewCount   Int      @map("review_count")
+  rating5       Int      @default(0) @map("rating_5")
+  rating4       Int      @default(0) @map("rating_4")
+  rating3       Int      @default(0) @map("rating_3")
+  rating2       Int      @default(0) @map("rating_2")
+  rating1       Int      @default(0) @map("rating_1")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  salon Salon @relation(fields: [salonId], references: [id], onDelete: Cascade)
+
+  @@map("salon_ratings")
+}
+
+// ─── Favorites (saved salons) ─────────────────────────────────
+model Favorite {
+  id         String   @id @default(uuid())
+  customerId String   @map("customer_id")
+  salonId    String   @map("salon_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon    Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, salonId])
+  @@index([customerId])
+  @@map("favorites")
+}
+
+// ─── Payment Methods (masked only) ─────────────────────────────
+model PaymentMethod {
+  id            String   @id @default(uuid())
+  customerId    String   @map("customer_id")
+  type          String // upi | card | wallet
+  label         String // masked, e.g. •••• 4821
+  subLabel      String?  @map("sub_label") // e.g. Expires 09/29
+  providerToken String?  @map("provider_token") // gateway token (never raw card data)
+  isDefault     Boolean  @default(false) @map("is_default")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+  @@map("payment_methods")
+}
+
+// ─── Notifications (Realtime) ────────────────────────────────
+model Notification {
+  id            String   @id @default(uuid())
+  customerId    String   @map("customer_id")
+  category      String // booking | availability | ai | salon | review | system
+  title         String
+  description   String
+  timestamp     String // human-readable, e.g. "10 min ago"
+  read          Boolean  @default(false)
+  actionLabel   String?  @map("action_label")
+  actionType    String?  @map("action_type")
+  actionPayload String?  @map("action_payload")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, createdAt])
+  @@index([customerId, read])
+  @@map("notifications")
+}
+
+// ─── Support Tickets ──────────────────────────────────────────
+model SupportTicket {
+  id         String   @id @default(uuid())
+  ticketId   String   @unique @map("ticket_id") // SS-DEMO-XXXX
+  customerId String   @map("customer_id")
+  bookingId  String?  @map("booking_id")
+  category   String // Booking | Payment | Salon | Account | Technical | Other
+  subject    String
+  message    String
+  status     String   @default("OPEN") // OPEN | IN_PROGRESS | RESOLVED | CLOSED
+  replies    Json     @default("[]") // [{ from: "user"|"support", text, at }]
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, createdAt])
+  @@index([status])
+  @@index([category])
+  @@map("support_tickets")
+}
+
+// ─── Saved AI Looks ──────────────────────────────────────────
+model SavedLook {
+  id                  String   @id @default(uuid())
+  customerId          String   @map("customer_id")
+  style               String
+  category            String
+  description         String?
+  serviceName         String   @map("service_name")
+  visualPreview       String?  @map("visual_preview")
+  visualPreviewSource String?  @map("visual_preview_source") // reference-image | ai-generated
+  createdAt           DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, style, serviceName])
+  @@index([customerId, createdAt])
+  @@map("saved_looks")
+}
+
+// ─── Audit Log ────────────────────────────────────────────────
+model AuditLog {
+  id         String   @id @default(uuid())
+  customerId String   @map("customer_id")
+  action     String // BOOKING_CREATED | PAYMENT_VERIFIED | REVIEW_CREATED | ...
+  entityType String?  @map("entity_type") // booking | payment | review | profile | ...
+  entityId   String?  @map("entity_id")
+  details    Json? // safe metadata (no secrets)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, createdAt])
+  @@index([action])
+  @@map("audit_logs")
+}
+
+// ─── Customer Photos (secure storage) ────────────────────────
+model CustomerPhoto {
+  id           String    @id @default(uuid())
+  customerId   String    @map("customer_id")
+  storagePath  String    @map("storage_path") // e.g. "customers/{customerId}/{photoId}.jpg"
+  type         String    @default("profile") // profile | ai-analysis | try-on-result
+  mimeType     String    @default("image/jpeg") @map("mime_type")
+  sizeBytes    Int       @map("size_bytes")
+  signedUrl    String?   @map("signed_url") // temporary signed URL (expires)
+  urlExpiresAt DateTime? @map("url_expires_at") // when the signed URL expires
+  isDeleted    Boolean   @default(false) @map("is_deleted")
+  expiresAt    DateTime? // auto-cleanup date (for AI photos)
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, type])
+  @@index([expiresAt])
+  @@map("customer_photos")
+}
+
+// ─── AI Interactions (history) ───────────────────────────────
+model AiInteraction {
+  id             String   @id @default(uuid())
+  customerId     String   @map("customer_id")
+  type           String // analyze-photo | virtual-tryon | text-recommendation | salon-finder
+  inputSummary   Json     @map("input_summary") // { text, preferences, photoId, occasion, budget }
+  recommendation Json // structured recommendations array
+  modelProvider  String   @default("demo-pixel-analysis") @map("model_provider")
+  modelLabel     String   @default("Demo Engine") @map("model_label")
+  photoId        String?  @map("photo_id")
+  processingMs   Int      @default(0) @map("processing_ms")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, createdAt])
+  @@index([type])
+  @@map("ai_interactions")
+}

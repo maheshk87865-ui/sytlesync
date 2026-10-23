@@ -1,0 +1,259 @@
+// ============================================================
+// StyleSync Salon Partner App — Prisma Schema
+// ------------------------------------------------------------
+// Backend database schema for the StyleSync SALON-PARTNER-facing app.
+// Salon staff use this backend to manage bookings at their salon.
+//
+// KEY DESIGN DECISIONS:
+//   1. The Booking model stores SNAPSHOT fields (serviceNameSnapshot,
+//      staffNameSnapshot, customerNameSnapshot, customerPhoneSnapshot).
+//      Historical bookings stay correct even if the underlying
+//      Service / Staff / Customer records change later.
+//
+//   2. A UNIQUE constraint on (staffId, date, startTime) provides
+//      HARD DB-level double-booking prevention — two concurrent
+//      inserts for the same staff+date+time cannot both succeed.
+//      This is the last line of defense behind the $transaction +
+//      overlap-check server-side logic.
+//
+//   3. SalonStaff is the auth model for salon staff (stylists,
+//      managers, owners). Their JWT carries { staffId, salonId, role }
+//      so every endpoint can enforce "you only see bookings at YOUR
+//      salon" without trusting the frontend.
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Salon Staff (auth) ───────────────────────────────────────
+model SalonStaff {
+  id           String   @id @default(uuid())
+  salonId      String   @map("salon_id")
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  fullName     String   @map("full_name")
+  role         String   @default("STYLIST")   // OWNER | MANAGER | STYLIST | RECEPTIONIST
+  phone        String?
+  isActive     Boolean  @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  salon         Salon          @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  refreshTokens RefreshToken[]
+
+  @@index([salonId])
+  @@map("salon_staff")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  staffId   String   @map("staff_id")
+  token     String   @unique
+  revoked   Boolean  @default(false)
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  staff SalonStaff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@index([staffId])
+  @@index([token])
+  @@map("salon_refresh_tokens")
+}
+
+// ─── Salon ─────────────────────────────────────────────────────
+model Salon {
+  id                 String   @id @default(uuid())
+  name               String
+  tagline            String?
+  description        String?
+  category           String
+  logo               String?
+  coverImage         String?  @map("cover_image")
+  gallery            Json @default("[]")
+  rating             Float    @default(0)
+  reviewCount        Int      @default(0) @map("reviews_count")
+  distanceKm         Float    @default(0) @map("distance_km")
+  priceFrom          Int      @default(0) @map("price_from")
+  openUntil          String?  @map("open_until")
+  isOpen             Boolean  @default(true) @map("is_open")
+  verified           Boolean  @default(false)
+  status             String   @default("active")   // active | closed | temporarily_closed
+  openingHours       Json?    @map("opening_hours")
+  amenities          Json @default("[]")
+  address            String?
+  area               String?
+  cancellationPolicy String?  @map("cancellation_policy")
+  city               String?
+  latitude           Float?
+  longitude          Float?
+  isPublished        Boolean  @default(true) @map("is_published")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  staff       SalonStaff[]
+  services    SalonService[]
+  staffMembers StaffMember[]
+  bookings    Booking[]
+
+  @@map("salons")
+}
+
+// ─── Master Service catalog ──────────────────────────────────
+model Service {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  category        String
+  description     String?
+  image           String?
+  defaultDuration Int?     @map("default_duration")
+  status          String   @default("active")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  salonServices SalonService[]
+
+  @@index([category])
+  @@index([status])
+  @@map("services")
+}
+
+// ─── Salon-specific service (links salon + master service) ──
+model SalonService {
+  id             String   @id @default(uuid())
+  salonId        String   @map("salon_id")
+  serviceId      String?  @map("service_id")
+  name           String
+  description    String?
+  category       String
+  durationMin    Int      @map("duration_min")
+  durationLabel  String   @map("duration_label")
+  priceFrom      Int      @map("price_from")
+  priceTo        Int?     @map("price_to")
+  rating         Float    @default(0)
+  reviewCount    Int      @default(0) @map("reviews_count")
+  imageUrl       String?  @map("image_url")
+  whatsIncluded  Json @default("[]") @map("whats_included")
+  popular        Boolean  @default(false)
+  status         String   @default("active")
+  isPublished    Boolean  @default(true) @map("is_published")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  salon    Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  service  Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  bookings Booking[]
+
+  @@index([salonId])
+  @@index([serviceId])
+  @@map("salon_services")
+}
+
+// ─── Staff member (the stylist / barber / therapist) ────────
+model StaffMember {
+  id               String   @id @default(uuid())
+  salonId          String   @map("salon_id")
+  name             String
+  role             String
+  rating           Float    @default(0)
+  reviewCount      Int      @default(0) @map("reviews_count")
+  avatarColor      String?  @map("avatar_color")
+  initials         String?
+  yearsExperience  Int      @default(0) @map("years_experience")
+  bio              String?
+  specializations  Json @default("[]")
+  workingHours     Json     @map("working_hours")
+  breaks           Json?
+  daysOff          Json @default("[]") @map("days_off")
+  serviceIds       Json @default("[]") @map("service_ids")
+  isPublished      Boolean  @default(true) @map("is_published")
+  isActive         Boolean  @default(true) @map("is_active")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  salon     Salon     @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  bookings  Booking[]
+
+  @@index([salonId])
+  @@map("staff_members")
+}
+
+// ─── Customer (for manual bookings + history lookups) ────────
+model Customer {
+  id          String   @id @default(uuid())
+  email       String?
+  name        String?
+  mobile      String?
+  city        String?
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  bookings Booking[]
+
+  @@index([email])
+  @@index([mobile])
+  @@map("customers")
+}
+
+// ─── Booking (THE MAIN MODEL — with snapshots) ──────────────
+// Snapshot fields preserve the historical record. If the Service
+// name changes tomorrow, yesterday's bookings still show the
+// original name. If the staff member is renamed, the booking
+// still shows the staff name at the time of booking.
+model Booking {
+  id                     String   @id @default(uuid())
+  bookingId              String   @unique @map("booking_id")          // human-readable SS-XXXX
+  salonId                String   @map("salon_id")
+  customerId             String?  @map("customer_id")                // nullable for walk-ins
+  customerNameSnapshot   String   @map("customer_name_snapshot")
+  customerPhoneSnapshot  String?  @map("customer_phone_snapshot")
+  serviceId              String?  @map("service_id")
+  serviceNameSnapshot    String   @map("service_name_snapshot")
+  staffId                String   @map("staff_id")
+  staffNameSnapshot      String   @map("staff_name_snapshot")
+  date                   DateTime
+  startTime              String   @map("start_time")                  // "10:00"
+  endTime                String   @map("end_time")                    // "10:30"
+  durationMinutes        Int      @map("duration_minutes")
+  price                  Int
+  status                 String   @default("PENDING")                // PENDING | UPCOMING | COMPLETED | CANCELLED
+  paymentStatus          String   @default("PENDING") @map("payment_status")   // PENDING | PAID | REFUNDED | FAILED
+  paymentMethod          String?  @map("payment_method")
+  notes                  String?
+  cancellationReason     String?  @map("cancellation_reason")
+  // Audit timestamps — completedAt and cancelledAt let us reconstruct
+  // the booking's lifecycle even after the customer has long left.
+  completedAt            DateTime? @map("completed_at")
+  cancelledAt            DateTime? @map("cancelled_at")
+  createdAt              DateTime @default(now()) @map("created_at")
+  updatedAt              DateTime @updatedAt @map("updated_at")
+
+  salon    Salon        @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  customer Customer?    @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  service  SalonService? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  staff    StaffMember  @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  // ─── HARD DB-LEVEL DOUBLE-BOOKING PREVENTION ────────────────
+  // A staff member cannot have two bookings for the same date AND
+  // the same start time. This is a UNIQUE constraint — the second
+  // concurrent insert fails with P2002 (unique constraint violation),
+  // which the service layer maps to a booking_conflict error.
+  // The server-side overlap check inside a $transaction is the
+  // first line of defense; this constraint is the last line.
+  @@unique([staffId, date, startTime], map: "uniq_staff_date_starttime")
+  // The (staffId, date) index makes the overlap-check query fast:
+  // SELECT ... WHERE staffId = ? AND date = ? AND status != 'CANCELLED'
+  // returns only the relevant rows to test for time overlaps.
+  @@index([salonId, date])
+  @@index([staffId, date])
+  @@index([customerId])
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([createdAt])
+  @@map("bookings")
+}

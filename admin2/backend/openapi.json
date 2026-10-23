@@ -1,0 +1,380 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "StyleSync Salon Partner API",
+    "version": "1.0.0",
+    "description": "Production backend for the StyleSync Salon Partner App. All endpoints are salon-scoped — a user from Salon A can never access Salon B data.",
+    "contact": { "name": "StyleSync", "email": "support@stylesync.in" }
+  },
+  "servers": [
+    { "url": "http://localhost:4000/api/v1", "description": "Local" },
+    { "url": "https://api.stylesync.in/api/v1", "description": "Production" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "responses": {
+      "Success": {
+        "description": "Success",
+        "content": { "application/json": { "schema": { "type": "object", "properties": {
+          "success": { "type": "boolean", "example": true },
+          "data": { "type": "object" },
+          "message": { "type": "string" }
+        }}}}
+      },
+      "Error": {
+        "description": "Error",
+        "content": { "application/json": { "schema": { "type": "object", "properties": {
+          "success": { "type": "boolean", "example": false },
+          "error": { "type": "object", "properties": {
+            "code": { "type": "string", "example": "NOT_FOUND" },
+            "message": { "type": "string", "example": "Resource not found" },
+            "details": { "type": "object" }
+          }}
+        }}}}
+      }
+    }
+  },
+  "security": [{ "BearerAuth": [] }],
+  "tags": [
+    { "name": "Auth", "description": "Authentication and user management" },
+    { "name": "Salon", "description": "Salon profile, status, business hours" },
+    { "name": "Bookings", "description": "Booking CRUD, status, reschedule" },
+    { "name": "Calendar", "description": "Calendar views (month/week/day)" },
+    { "name": "Availability", "description": "Slot generation, blocks, breaks" },
+    { "name": "Services", "description": "Service catalog management" },
+    { "name": "Staff", "description": "Staff management, schedules, assignments" },
+    { "name": "Customers", "description": "Customer profiles, history, insights" },
+    { "name": "Reviews", "description": "Reviews and rating analytics" },
+    { "name": "Payments", "description": "Payments, revenue, refunds" },
+    { "name": "Analytics", "description": "Business intelligence dashboard" },
+    { "name": "Notifications", "description": "In-app notifications" },
+    { "name": "Support", "description": "Support tickets" },
+    { "name": "Settings", "description": "Business settings (Owner only)" },
+    { "name": "Audit", "description": "Audit logs (Owner only)" },
+    { "name": "Health", "description": "Health check" }
+  ],
+  "paths": {
+    "/health": {
+      "get": { "tags": ["Health"], "security": [], "summary": "Health check",
+        "responses": { "200": { "description": "Healthy" }, "503": { "description": "Degraded" }}}
+    },
+    "/auth/register": {
+      "post": { "tags": ["Auth"], "security": [], "summary": "Register a new salon + owner",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": {
+          "salon": { "type": "object", "properties": { "name": {"type":"string"}, "area": {"type":"string"}, "city": {"type":"string"}, "phone": {"type":"string"} }},
+          "user": { "type": "object", "properties": { "name": {"type":"string"}, "email": {"type":"string"}, "password": {"type":"string"} }}
+        }}}}
+      },
+      "responses": { "201": { "$ref": "#/components/responses/Success" }, "409": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/auth/login": {
+      "post": { "tags": ["Auth"], "security": [], "summary": "Login",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": {
+          "email": {"type":"string"}, "password": {"type":"string"}
+        }}}}
+      },
+      "responses": { "200": { "$ref": "#/components/responses/Success" }, "401": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/auth/me": {
+      "get": { "tags": ["Auth"], "summary": "Get current user", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/auth/logout": {
+      "post": { "tags": ["Auth"], "summary": "Logout", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/auth/refresh": {
+      "post": { "tags": ["Auth"], "security": [], "summary": "Refresh session",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"refreshToken":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "401": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/auth/forgot-password": {
+      "post": { "tags": ["Auth"], "security": [], "summary": "Request password reset",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"email":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/auth/reset-password": {
+      "post": { "tags": ["Auth"], "security": [], "summary": "Reset password with token",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"token":{"type":"string"},"newPassword":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "400": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/auth/change-password": {
+      "post": { "tags": ["Auth"], "summary": "Change password (requires current)",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"currentPassword":{"type":"string"},"newPassword":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "401": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/auth/users": {
+      "get": { "tags": ["Auth"], "summary": "List salon users (Owner+Manager)", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Auth"], "summary": "Create user (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/auth/users/{id}": {
+      "put": { "tags": ["Auth"], "summary": "Update user (Owner+Manager)", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "404": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/salon": {
+      "get": { "tags": ["Salon"], "summary": "Get salon profile", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Salon"], "summary": "Update salon profile (Owner)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/salon/status": {
+      "patch": { "tags": ["Salon"], "summary": "Set OPEN/CLOSED (Owner+Manager)",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"status":{"type":"string","enum":["OPEN","CLOSED"]}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/salon/business-hours": {
+      "get": { "tags": ["Salon"], "summary": "Get business hours", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Salon"], "summary": "Update business hours (Owner)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/salon/closure": {
+      "post": { "tags": ["Salon"], "summary": "Set temporary closure (Owner)", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "delete": { "tags": ["Salon"], "summary": "Clear temporary closure (Owner)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/bookings": {
+      "get": { "tags": ["Bookings"], "summary": "List bookings (with filters)",
+        "parameters": [
+          {"name":"tab","in":"query","schema":{"type":"string","enum":["ALL","TODAY","PENDING","UPCOMING","COMPLETED","CANCELLED"]}},
+          {"name":"date","in":"query","schema":{"type":"string"}},
+          {"name":"staffId","in":"query","schema":{"type":"string"}},
+          {"name":"serviceId","in":"query","schema":{"type":"string"}},
+          {"name":"status","in":"query","schema":{"type":"string"}},
+          {"name":"search","in":"query","schema":{"type":"string"}}
+        ],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Bookings"], "summary": "Create booking (server validates all conflicts)",
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {
+          "customerName":{"type":"string"},"customerPhone":{"type":"string"},
+          "serviceId":{"type":"string"},"staffId":{"type":"string"},
+          "date":{"type":"string"},"startTime":{"type":"string"}
+        }}}}},
+        "responses": { "201": { "$ref": "#/components/responses/Success" }, "409": { "$ref": "#/components/responses/Error", "description": "Booking conflict (SALON_CLOSED, STAFF_UNAVAILABLE, BOOKING_CONFLICT, SLOT_BLOCKED, SLOT_BREAK)" }}}
+    },
+    "/bookings/{id}": {
+      "get": { "tags": ["Bookings"], "summary": "Get booking detail",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "404": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/bookings/{id}/status": {
+      "post": { "tags": ["Bookings"], "summary": "Update booking status",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"status":{"type":"string","enum":["PENDING","UPCOMING","COMPLETED","CANCELLED"]},"reason":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "409": { "$ref": "#/components/responses/Error", "description": "INVALID_STATUS_TRANSITION" }}}
+    },
+    "/bookings/{id}/complete": {
+      "post": { "tags": ["Bookings"], "summary": "Mark booking completed",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/bookings/{id}/cancel": {
+      "post": { "tags": ["Bookings"], "summary": "Cancel booking (requires reason)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"reason":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/bookings/{id}/reschedule": {
+      "post": { "tags": ["Bookings"], "summary": "Reschedule booking (re-checks all availability)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"date":{"type":"string"},"startTime":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "409": { "$ref": "#/components/responses/Error" }}}
+    },
+    "/calendar": {
+      "get": { "tags": ["Calendar"], "summary": "Get calendar events (month/week/day)",
+        "parameters": [
+          {"name":"view","in":"query","schema":{"type":"string","enum":["MONTH","WEEK","DAY"]}},
+          {"name":"startDate","in":"query","schema":{"type":"string"}},
+          {"name":"endDate","in":"query","schema":{"type":"string"}},
+          {"name":"staffId","in":"query","schema":{"type":"string"}}
+        ],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/availability": {
+      "get": { "tags": ["Availability"], "summary": "Get calculated slots (AVAILABLE/BOOKED/BLOCKED/BREAK/UNAVAILABLE)",
+        "parameters": [
+          {"name":"date","in":"query","required":true,"schema":{"type":"string"}},
+          {"name":"staffId","in":"query","schema":{"type":"string"}},
+          {"name":"serviceId","in":"query","schema":{"type":"string"}}
+        ],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/availability/blocks": {
+      "get": { "tags": ["Availability"], "summary": "List blocked slots + breaks", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Availability"], "summary": "Create blocked slot (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/availability/breaks": {
+      "post": { "tags": ["Availability"], "summary": "Create break (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/availability/blocks/{id}": {
+      "delete": { "tags": ["Availability"], "summary": "Remove blocked slot/break (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/services": {
+      "get": { "tags": ["Services"], "summary": "List services", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Services"], "summary": "Create service (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/services/{id}": {
+      "get": { "tags": ["Services"], "summary": "Get service detail",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Services"], "summary": "Update service (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "delete": { "tags": ["Services"], "summary": "Safe delete (auto-deactivates if bookings exist, Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/services/{id}/deactivate": { "post": { "tags": ["Services"], "summary": "Deactivate service (Owner+Manager)",
+      "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}},
+    "/services/{id}/reactivate": { "post": { "tags": ["Services"], "summary": "Reactivate service (Owner+Manager)",
+      "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}},
+    "/staff": {
+      "get": { "tags": ["Staff"], "summary": "List staff", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Staff"], "summary": "Create staff (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/staff/{id}": {
+      "get": { "tags": ["Staff"], "summary": "Get staff detail",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Staff"], "summary": "Update staff (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "delete": { "tags": ["Staff"], "summary": "Remove staff (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/staff/{id}/services": {
+      "get": { "tags": ["Staff"], "summary": "List staff's service assignments",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Staff"], "summary": "Replace service assignments (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/staff/{id}/schedule": {
+      "get": { "tags": ["Staff"], "summary": "Get weekly schedule",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Staff"], "summary": "Replace weekly schedule (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/staff/{id}/unavailability": {
+      "post": { "tags": ["Staff"], "summary": "Add temporary time-off",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "201": { "$ref": "#/components/responses/Success" }}},
+      "get": { "tags": ["Staff"], "summary": "List time-off entries",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/customers": {
+      "get": { "tags": ["Customers"], "summary": "List customers (with filters)", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Customers"], "summary": "Create customer (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/customers/insights": {
+      "get": { "tags": ["Customers"], "summary": "Customer insights (calculated from data, Owner+Manager)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/customers/{id}": {
+      "get": { "tags": ["Customers"], "summary": "Customer detail (profile+history+reviews+favorites)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Customers"], "summary": "Update customer (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "delete": { "tags": ["Customers"], "summary": "Remove customer (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/customers/{id}/history": {
+      "get": { "tags": ["Customers"], "summary": "Customer booking history",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/reviews": {
+      "get": { "tags": ["Reviews"], "summary": "List reviews (with filters)", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Reviews"], "summary": "Create review (Owner+Manager)", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/reviews/analytics": {
+      "get": { "tags": ["Reviews"], "summary": "Rating distribution + average (calculated)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/reviews/{id}": {
+      "get": { "tags": ["Reviews"], "summary": "Review detail",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/reviews/{id}/reply": {
+      "post": { "tags": ["Reviews"], "summary": "Reply to review (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"reply":{"type":"string"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/payments": {
+      "get": { "tags": ["Payments"], "summary": "List payments (Owner+Manager)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/payments/summary": {
+      "get": { "tags": ["Payments"], "summary": "Revenue summary (today/week/month/lastMonth/allTime/custom, Owner+Manager)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/payments/{id}": {
+      "get": { "tags": ["Payments"], "summary": "Payment detail",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/payments/{id}/status": {
+      "post": { "tags": ["Payments"], "summary": "Update payment status (idempotent, Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/payments/{id}/refund": {
+      "post": { "tags": ["Payments"], "summary": "Refund payment (full or partial, idempotent, Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "requestBody": { "content": { "application/json": { "schema": { "type":"object","properties": {"reason":{"type":"string"},"amount":{"type":"number"}} }}}},
+        "responses": { "200": { "$ref": "#/components/responses/Success" }, "409": { "$ref": "#/components/responses/Error", "description": "PAYMENT_NOT_REFUNDABLE" }}}
+    },
+    "/analytics/dashboard": {
+      "get": { "tags": ["Analytics"], "summary": "Dashboard summary (today's metrics + upcoming, Owner+Manager)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/analytics": {
+      "get": { "tags": ["Analytics"], "summary": "Full analytics (revenue, bookings, services, staff, customers, peak times, Owner+Manager)",
+        "parameters": [
+          {"name":"range","in":"query","schema":{"type":"string","enum":["TODAY","YESTERDAY","7D","30D","MONTH","LAST_MONTH","ALL","CUSTOM"]}},
+          {"name":"dateFrom","in":"query","schema":{"type":"string"}},
+          {"name":"dateTo","in":"query","schema":{"type":"string"}}
+        ],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/notifications": {
+      "get": { "tags": ["Notifications"], "summary": "List notifications (user-scoped)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/notifications/{id}/read": {
+      "patch": { "tags": ["Notifications"], "summary": "Mark notification as read",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/notifications/read-all": {
+      "post": { "tags": ["Notifications"], "summary": "Mark all as read", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/support": {
+      "get": { "tags": ["Support"], "summary": "List support tickets", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "post": { "tags": ["Support"], "summary": "Create support ticket", "responses": { "201": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/support/{id}": {
+      "get": { "tags": ["Support"], "summary": "Ticket detail (with responses)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }], "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/support/{id}/respond": {
+      "post": { "tags": ["Support"], "summary": "Add response",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/support/{id}/status": {
+      "patch": { "tags": ["Support"], "summary": "Update ticket status (Owner+Manager)",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": {"type":"string"} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/settings": {
+      "get": { "tags": ["Settings"], "summary": "Get all settings (Owner only)", "responses": { "200": { "$ref": "#/components/responses/Success" }}},
+      "patch": { "tags": ["Settings"], "summary": "Update settings (Owner only)", "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/settings/{section}": {
+      "get": { "tags": ["Settings"], "summary": "Get a specific settings section (Owner only)",
+        "parameters": [{ "name": "section", "in": "path", "required": true, "schema": {"type":"string","enum":["account","business","notifications","booking","cancellation","payment","security"]} }],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    },
+    "/audit": {
+      "get": { "tags": ["Audit"], "summary": "List audit logs (Owner only, with filters)",
+        "parameters": [
+          {"name":"action","in":"query","schema":{"type":"string"}},
+          {"name":"entityType","in":"query","schema":{"type":"string"}},
+          {"name":"userId","in":"query","schema":{"type":"string"}},
+          {"name":"dateFrom","in":"query","schema":{"type":"string"}},
+          {"name":"dateTo","in":"query","schema":{"type":"string"}}
+        ],
+        "responses": { "200": { "$ref": "#/components/responses/Success" }}}
+    }
+  }
+}

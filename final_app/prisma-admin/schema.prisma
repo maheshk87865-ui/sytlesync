@@ -1,0 +1,310 @@
+// StyleSync Super Admin Database Schema
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated-clients/admin"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         String    @default("SUPER_ADMIN") // SUPER_ADMIN, OPERATIONS_ADMIN, SUPPORT_ADMIN, FINANCE_ADMIN, ANALYST
+  status       String    @default("ACTIVE") // ACTIVE, INACTIVE
+  avatarUrl    String?
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  assignedTickets SupportTicket[] @relation("AssignedAdmin")
+  auditLogs       AuditLog[]
+}
+
+model Customer {
+  id           String    @id @default(cuid())
+  name         String
+  email        String    @unique
+  phone        String
+  city         String    @default("Srinagar")
+  locality     String    @default("Lal Chowk")
+  status       String    @default("ACTIVE") // ACTIVE, SUSPENDED
+  avatarUrl    String?
+  bookingCount Int       @default(0)
+  totalSpent   Float     @default(0.0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  bookings       Booking[]
+  reviews        Review[]
+  supportTickets SupportTicket[]
+  payments       Payment[]
+}
+
+model Salon {
+  id                 String    @id @default(cuid())
+  name               String
+  slug               String    @unique
+  ownerName          String
+  ownerEmail         String
+  ownerPhone         String
+  address            String
+  locality           String    @default("Lal Chowk")
+  city               String    @default("Srinagar")
+  rating             Float     @default(4.5)
+  reviewCount        Int       @default(0)
+  applicationStatus  String    @default("PENDING") // PENDING, APPROVED, REJECTED, SUSPENDED
+  operationalStatus  String    @default("OPEN") // OPEN, CLOSED
+  verificationStatus String    @default("PENDING") // VERIFIED, PENDING, REJECTED
+  rejectionReason    String?
+  businessHoursJson  String?   // JSON object string
+  coverImageUrl      String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  staff          SalonStaff[]
+  salonServices  SalonService[]
+  bookings       Booking[]
+  reviews        Review[]
+  supportTickets SupportTicket[]
+  payments       Payment[]
+}
+
+model SalonStaff {
+  id          String   @id @default(cuid())
+  salonId     String
+  name        String
+  role        String   @default("Stylist")
+  phone       String?
+  email       String?
+  isAvailable Boolean  @default(true)
+  rating      Float    @default(4.8)
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+
+  salon    Salon     @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+}
+
+model ServiceCategory {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  slug         String   @unique
+  description  String?
+  icon         String   @default("Sparkles")
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  services GlobalService[]
+}
+
+model GlobalService {
+  id           String   @id @default(cuid())
+  categoryId   String
+  name         String
+  slug         String   @unique
+  description  String?
+  basePrice    Float
+  durationMin  Int      @default(30)
+  genderTarget String   @default("UNISEX") // UNISEX, WOMEN, MEN
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  category      ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  salonServices SalonService[]
+  bookings      Booking[]
+}
+
+model SalonService {
+  id                String   @id @default(cuid())
+  salonId           String
+  globalServiceId   String
+  customPrice       Float
+  customDurationMin Int
+  isAvailable       Boolean  @default(true)
+  createdAt         DateTime @default(now())
+
+  salon         Salon         @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  globalService GlobalService @relation(fields: [globalServiceId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+  id                String    @id @default(cuid())
+  bookingNumber     String    @unique
+  customerId        String
+  salonId           String
+  staffId           String?
+  serviceId         String
+  appointmentDate   String    // YYYY-MM-DD
+  startTime         String    // HH:mm
+  endTime           String    // HH:mm
+  price             Float
+  commissionRate    Float     @default(0.07) // 0.07 (7% new) or 0.02 (2% repeat)
+  commissionAmount  Float     @default(0.0)
+  salonPayoutAmount Float     @default(0.0)
+  bookingStatus     String    @default("CONFIRMED") // PENDING, CONFIRMED, COMPLETED, CANCELLED, NO_SHOW
+  paymentStatus     String    @default("PAID") // PENDING, PAID, REFUNDED, FAILED
+  notes             String?
+  cancellationReason String?
+  cancelledBy       String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  customer       Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon          Salon           @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  staff          SalonStaff?     @relation(fields: [staffId], references: [id], onDelete: SetNull)
+  service        GlobalService   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  payment        Payment?
+  review         Review?
+  supportTickets SupportTicket[]
+}
+
+model Payment {
+  id                String    @id @default(cuid())
+  transactionNumber String    @unique
+  bookingId         String    @unique
+  customerId        String
+  salonId           String
+  amount            Float
+  commissionAmount  Float
+  salonPayoutAmount Float
+  paymentMethod     String    @default("UPI") // CARD, UPI, NETBANKING, CASH
+  providerRef       String?
+  status            String    @default("SUCCESS") // SUCCESS, PENDING, REFUNDED, FAILED
+  paidAt            DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+
+  booking Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon   Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  refunds Refund[]
+}
+
+model Refund {
+  id                 String   @id @default(cuid())
+  paymentId          String
+  bookingId          String
+  amount             Float
+  reason             String
+  status             String   @default("PROCESSED") // PROCESSED, PENDING, REJECTED
+  processedByAdminId String?
+  createdAt          DateTime @default(now())
+
+  payment Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id                 String    @id @default(cuid())
+  customerId         String
+  salonId            String
+  bookingId          String?   @unique
+  rating             Int       @default(5)
+  comment            String
+  reportStatus       String    @default("NORMAL") // NORMAL, REPORTED
+  moderationStatus   String    @default("APPROVED") // APPROVED, HIDDEN, UNDER_REVIEW
+  moderationReason   String?
+  moderatedByAdminId String?
+  createdAt          DateTime  @default(now())
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  salon    Salon    @relation(fields: [salonId], references: [id], onDelete: Cascade)
+  booking  Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+}
+
+model SupportTicket {
+  id              String   @id @default(cuid())
+  ticketNumber    String   @unique
+  customerId      String?
+  salonId         String?
+  bookingId       String?
+  category        String   @default("GENERAL") // BOOKING, PAYMENT, CANCELLATION, REFUND, ACCOUNT, TECHNICAL, GENERAL
+  priority        String   @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  status          String   @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, CLOSED
+  subject         String
+  description     String
+  internalNotes   String?
+  assignedAdminId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  customer      Customer?       @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  salon         Salon?          @relation(fields: [salonId], references: [id], onDelete: SetNull)
+  booking       Booking?        @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  assignedAdmin Admin?          @relation("AssignedAdmin", fields: [assignedAdminId], references: [id], onDelete: SetNull)
+  messages      TicketMessage[]
+}
+
+model TicketMessage {
+  id         String   @id @default(cuid())
+  ticketId   String
+  senderType String   @default("ADMIN") // CUSTOMER, SALON, ADMIN
+  senderName String
+  message    String
+  isInternal Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+}
+
+model AIOperation {
+  id              String   @id @default(cuid())
+  operationType   String   // RECOMMENDATION, PHOTO_ANALYSIS, HAIRSTYLE_TRYON, SALON_MATCHING
+  modelUsed       String   @default("gemini-1.5-pro")
+  promptSnippet   String?
+  tokensUsed      Int      @default(320)
+  latencyMs       Int      @default(450)
+  status          String   @default("SUCCESS") // SUCCESS, FAILED
+  costEstimateInr Float    @default(0.12)
+  createdAt       DateTime @default(now())
+}
+
+model Location {
+  id          String   @id @default(cuid())
+  cityName    String   @default("Srinagar")
+  localityName String
+  state       String   @default("Jammu and Kashmir")
+  postalCode  String   @default("190001")
+  isActive    Boolean  @default(true)
+  salonCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model PlatformSetting {
+  id               String   @id @default(cuid())
+  key              String   @unique
+  value            String
+  description      String?
+  category         String   @default("GENERAL")
+  updatedByAdminId String?
+  updatedAt        DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  adminId     String?
+  adminEmail  String
+  action      String
+  entityType  String
+  entityId    String?
+  detailsJson String?  // JSON string
+  ipAddress   String?  @default("127.0.0.1")
+  createdAt   DateTime @default(now())
+
+  admin Admin? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+}
+
+model AdminNotification {
+  id            String   @id @default(cuid())
+  title         String
+  message       String
+  type          String   @default("SYSTEM_ALERT") // SALON_APPLICATION, PAYMENT_ISSUE, SUPPORT_TICKET, REVIEW_REPORT, SECURITY_ALERT, SYSTEM_ALERT
+  read          Boolean  @default(false)
+  relatedEntity String?
+  relatedId     String?
+  createdAt     DateTime @default(now())
+}

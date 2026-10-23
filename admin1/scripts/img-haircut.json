@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "hairdresser cutting hair professional salon chair"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "hairdresser cutting hair professional salon chair",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1ba1763a9379.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "894px",
+      "original_height": "892px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f4ad71afa673.png",
+      "caption": "",
+      "source": "Alibaba",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7c833876c7b6.jpeg",
+      "caption": "",
+      "source": "Ubuy Liberia",
+      "original_width": "1600px",
+      "original_height": "1600px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/af1680928250.jpg",
+      "caption": "",
+      "source": "HairArt",
+      "original_width": "795px",
+      "original_height": "1155px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b47288c70886.jpg",
+      "caption": "",
+      "source": "eldawaelmasry.com",
+      "original_width": "963px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f0cf4a2ee7e5.jpg",
+      "caption": "",
+      "source": "Dayjour",
+      "original_width": "1280px",
+      "original_height": "1280px"
+    }
+  ]
+}

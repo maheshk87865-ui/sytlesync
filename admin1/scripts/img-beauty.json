@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "beauty salon facial skincare treatment room interior"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "beauty salon facial skincare treatment room interior",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8e84951b8786.jpg",
+      "caption": "",
+      "source": "Etsy",
+      "original_width": "570px",
+      "original_height": "1710px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2a5a874d59fc.jpg",
+      "caption": "",
+      "source": "Alamy",
+      "original_width": "1300px",
+      "original_height": "956px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4291c304e1c9.jpg",
+      "caption": "",
+      "source": "Med Spa Woodbury MN",
+      "original_width": "1000px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/bb6c5f410159.jpg",
+      "caption": "",
+      "source": "My PB + J",
+      "original_width": "4032px",
+      "original_height": "3024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/67606b26ad54.jpg",
+      "caption": "",
+      "source": "Simply Dermatology",
+      "original_width": "1707px",
+      "original_height": "2560px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ca5edfc10dce.jpg",
+      "caption": "",
+      "source": "Yelp",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    }
+  ]
+}

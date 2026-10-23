@@ -1,0 +1,3927 @@
+[
+  {
+    "id": "bk-seed-1001",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-27",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1002",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-27",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1003",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-28",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1004",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-2",
+      "name": "Hair Wash & Blow Dry",
+      "category": "Hair",
+      "price": 700,
+      "duration": 45,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-28",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 700
+  },
+  {
+    "id": "bk-seed-1005",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-29",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1006",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-1",
+      "name": "Haircut & Style",
+      "category": "Hair",
+      "price": 500,
+      "duration": 45,
+      "staff": [
+        "staff-1",
+        "staff-3"
+      ]
+    },
+    "staff": {
+      "id": "staff-3",
+      "name": "Tariq Bhat"
+    },
+    "date": "2026-09-29",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 500
+  },
+  {
+    "id": "bk-seed-1007",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-30",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1008",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-6",
+      "name": "Beard Grooming",
+      "category": "Beard & Grooming",
+      "price": 400,
+      "duration": 30,
+      "staff": [
+        "staff-3"
+      ]
+    },
+    "staff": {
+      "id": "staff-3",
+      "name": "Tariq Bhat"
+    },
+    "date": "2026-09-30",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 400
+  },
+  {
+    "id": "bk-seed-1009",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-01",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1010",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-06",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1011",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-11",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1012",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-16",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1013",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-21",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1014",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-26",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1015",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-02",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1016",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-03",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1017",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-04",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1018",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-05",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1019",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-07",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1020",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-08",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1021",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-09",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1022",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-10",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1023",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-12",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1024",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-13",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1025",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-14",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1026",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-15",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1027",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-17",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1028",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-18",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1029",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-19",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1030",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-20",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1031",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-22",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1032",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-09-23",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1033",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-24",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1034",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-09-25",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1035",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-01",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1036",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-01",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1037",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-02",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1038",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-02",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1039",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-03",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1040",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-03",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1041",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-04",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1042",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-04",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1043",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-05",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1044",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-05",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1045",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-06",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1046",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-06",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1047",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-07",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1048",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-07",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1049",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-08",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1050",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-08",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1051",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-09",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1052",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-09",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1053",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-10",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1054",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-2",
+      "name": "Hair Wash & Blow Dry",
+      "category": "Hair",
+      "price": 700,
+      "duration": 45,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-10",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 700
+  },
+  {
+    "id": "bk-seed-1055",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-11",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1056",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-11",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1057",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-12",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1058",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-12",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1059",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-13",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1060",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-13",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1061",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-14",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1062",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-14",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1063",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-15",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1064",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-15",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1065",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-15",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1066",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-16",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1067",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-16",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1068",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-17",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1069",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-17",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1070",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-18",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1071",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-18",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1072",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-19",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1073",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-19",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1074",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-20",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1075",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-20",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1076",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-21",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1077",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-21",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1078",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-22",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1079",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-22",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1080",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-23",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1081",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-23",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1082",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-24",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1083",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-24",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1084",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-25",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1085",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-25",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1086",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-26",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1087",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-26",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1088",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-27",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1089",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-27",
+    "time": "16:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1090",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-28",
+    "time": "17:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1091",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-28",
+    "time": "09:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1092",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-29",
+    "time": "10:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1093",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-29",
+    "time": "11:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1094",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-30",
+    "time": "12:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1095",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-30",
+    "time": "13:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1096",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-08-31",
+    "time": "14:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1097",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-08-31",
+    "time": "15:00",
+    "status": "COMPLETED",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1098",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-04",
+    "time": "16:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1099",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-04",
+    "time": "17:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1100",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-05",
+    "time": "09:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1101",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-06",
+    "time": "10:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1102",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-07",
+    "time": "11:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1103",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-08",
+    "time": "12:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1104",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-08",
+    "time": "13:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1105",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-09",
+    "time": "14:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1106",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-10",
+    "time": "15:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1107",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-11",
+    "time": "16:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1108",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-6",
+      "name": "Beard Grooming",
+      "category": "Beard & Grooming",
+      "price": 400,
+      "duration": 30,
+      "staff": [
+        "staff-3"
+      ]
+    },
+    "staff": {
+      "id": "staff-3",
+      "name": "Tariq Bhat"
+    },
+    "date": "2026-10-11",
+    "time": "17:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 400
+  },
+  {
+    "id": "bk-seed-1109",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-12",
+    "time": "09:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1110",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-12",
+    "time": "10:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1111",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-13",
+    "time": "11:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1112",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-14",
+    "time": "12:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1113",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-15",
+    "time": "13:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1114",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-16",
+    "time": "14:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1115",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-16",
+    "time": "15:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1116",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-17",
+    "time": "16:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1117",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-18",
+    "time": "17:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1118",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-19",
+    "time": "09:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1119",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-20",
+    "time": "10:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1120",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-20",
+    "time": "11:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1121",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-21",
+    "time": "12:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1122",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-22",
+    "time": "13:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1123",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-23",
+    "time": "14:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1124",
+    "customer": {
+      "id": "cust-4",
+      "name": "Mahesh Kumar",
+      "phone": "+91 94190 55104",
+      "email": "mahesh.k@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-24",
+    "time": "15:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1125",
+    "customer": {
+      "id": "cust-5",
+      "name": "Priya Nair",
+      "phone": "+91 94190 55105",
+      "email": "priya.nair@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-24",
+    "time": "16:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1126",
+    "customer": {
+      "id": "cust-6",
+      "name": "Arjun Gupta",
+      "phone": "+91 94190 55106",
+      "email": "arjun.g@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-25",
+    "time": "17:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1127",
+    "customer": {
+      "id": "cust-7",
+      "name": "Neha Sharma",
+      "phone": "+91 94190 55107",
+      "email": "neha.sharma@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-26",
+    "time": "09:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1128",
+    "customer": {
+      "id": "cust-8",
+      "name": "Rohit Kumar",
+      "phone": "+91 94190 55108",
+      "email": "rohit.k@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-27",
+    "time": "10:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1129",
+    "customer": {
+      "id": "cust-9",
+      "name": "Sana Khan",
+      "phone": "+91 94190 55109",
+      "email": "sana.k@example.com"
+    },
+    "service": {
+      "id": "svc-5",
+      "name": "Hair Colour - Root Touch-up",
+      "category": "Hair",
+      "price": 1500,
+      "duration": 90,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-28",
+    "time": "11:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Net Banking",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1130",
+    "customer": {
+      "id": "cust-10",
+      "name": "Vikram Singh",
+      "phone": "+91 94190 55110",
+      "email": "vikram.s@example.com"
+    },
+    "service": {
+      "id": "svc-7",
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 800,
+      "duration": 60,
+      "staff": [
+        "staff-1"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-28",
+    "time": "12:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Cash",
+    "price": 800
+  },
+  {
+    "id": "bk-seed-1131",
+    "customer": {
+      "id": "cust-1",
+      "name": "Aisha Khan",
+      "phone": "+91 94190 55101",
+      "email": "aisha.khan@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-29",
+    "time": "13:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  },
+  {
+    "id": "bk-seed-1132",
+    "customer": {
+      "id": "cust-2",
+      "name": "Imtiyaz Ahmed",
+      "phone": "+91 94190 55102",
+      "email": "imtiyaz.a@example.com"
+    },
+    "service": {
+      "id": "svc-8",
+      "name": "Facial",
+      "category": "Skin & Beauty",
+      "price": 1500,
+      "duration": 60,
+      "staff": [
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-2",
+      "name": "Aisha Khan"
+    },
+    "date": "2026-10-30",
+    "time": "14:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "Card",
+    "price": 1500
+  },
+  {
+    "id": "bk-seed-1133",
+    "customer": {
+      "id": "cust-3",
+      "name": "Rahul Verma",
+      "phone": "+91 94190 55103",
+      "email": "rahul.verma@example.com"
+    },
+    "service": {
+      "id": "svc-3",
+      "name": "Hair Spa Treatment",
+      "category": "Hair",
+      "price": 1200,
+      "duration": 60,
+      "staff": [
+        "staff-1",
+        "staff-2"
+      ]
+    },
+    "staff": {
+      "id": "staff-1",
+      "name": "Ria Mahajan"
+    },
+    "date": "2026-10-31",
+    "time": "15:00",
+    "status": "UPCOMING",
+    "paymentStatus": "PAID",
+    "method": "UPI",
+    "price": 1200
+  }
+]

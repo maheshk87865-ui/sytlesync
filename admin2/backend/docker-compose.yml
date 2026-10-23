@@ -1,0 +1,51 @@
+# ============================================================
+# StyleSync Salon Partner API — Docker Compose
+#
+# Usage:
+#   docker compose up -d                    # Start all services
+#   docker compose run api bun run db:migrate  # Run migrations
+#   docker compose run api bun run db:seed     # Seed demo data
+# ============================================================
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: stylesync
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-stylesync_dev}
+      POSTGRES_DB: stylesync_salon
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stylesync"]
+      interval: 5s
+      retries: 5
+
+  api:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 4000
+      DATABASE_URL: postgresql://stylesync:${DB_PASSWORD:-stylesync_dev}@db:5432/stylesync_salon?schema=public
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:-dev-only-change-me-in-production-min-32-chars-please}
+      AUTH_JWT_EXPIRES_IN: 7d
+      AUTH_COOKIE_SECURE: "false"
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      APP_BASE_URL: http://localhost:4000
+      FRONTEND_BASE_URL: ${FRONTEND_BASE_URL:-http://localhost:3000}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      ENABLE_API_DOCS: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./prisma:/app/prisma  # Mount for migration access
+    command: >
+      sh -c "bun run db:migrate && bun src/server.ts"
+
+volumes:
+  pgdata:

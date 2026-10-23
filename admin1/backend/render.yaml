@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: stylesync-api
+    runtime: node
+    plan: starter
+    region: oregon
+    rootDir: admin1/backend
+    buildCommand: npm install && npx prisma generate --schema=prisma/schema.sqlite.prisma && npm run build
+    startCommand: node dist/server.js
+    disk:
+      name: stylesync-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        value: file:/data/stylesync.db
+      - key: CORS_ORIGINS
+        value: https://stylesync-customer.vercel.app,https://stylesync-salon.vercel.app,https://stylesync-admin.vercel.app
+      - key: JWT_SECRET
+        generateValue: true
+      - key: AI_MODE
+        value: real

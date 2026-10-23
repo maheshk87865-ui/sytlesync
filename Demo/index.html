@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aura Studio - Next-Generation Creative Intelligence & AI Sandbox Dashboard">
+  <title>Aura Studio | Next-Gen AI Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-violet">
+  <!-- Glowing background elements -->
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="main-nav">
+    <div class="nav-brand">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      </div>
+      <span class="brand-text">AURA<span>STUDIO</span></span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#overview" class="nav-item active" id="nav-overview">Overview</a>
+      <a href="#sandbox" class="nav-item" id="nav-sandbox">AI Sandbox</a>
+      <a href="#projects" class="nav-item" id="nav-projects">Projects</a>
+      <a href="#system" class="nav-item" id="nav-system">System Health</a>
+    </div>
+
+    <div class="nav-actions">
+      <div class="system-status-badge" id="system-status">
+        <span class="status-dot"></span>
+        <span class="status-label">Cluster Live</span>
+      </div>
+      <button class="accent-toggle-btn" id="btn-theme-toggle" title="Cycle Accent Color">
+        <span class="accent-dot"></span>
+        <span class="btn-text">Accent</span>
+      </button>
+      <button class="btn btn-primary" id="btn-quick-create">+ New Project</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    <!-- Hero / Welcome Section -->
+    <header class="hero-section" id="overview">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <span class="sparkle">✨</span> Release v3.4 Active &mdash; Neural Pipeline Online
+        </div>
+        <h1 class="hero-title">Creative Intelligence <br><span class="gradient-text">Engineered for Flow</span></h1>
+        <p class="hero-subtitle">Synthesize multi-modal concepts, orchestrate generative workflows, and deploy digital assets at the speed of thought.</p>
+      </div>
+      <div class="hero-actions">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="project-search-input" placeholder="Search prompts, models, pipelines...">
+        </div>
+      </div>
+    </header>
+
+    <!-- Real-time Telemetry Stats Cards -->
+    <section class="metrics-grid" id="system">
+      <div class="metric-card glass-card">
+        <div class="metric-header">
+          <span class="metric-label">Neural Nodes</span>
+          <span class="metric-trend positive">+14.2%</span>
+        </div>
+        <div class="metric-value" id="stat-nodes">128</div>
+        <div class="metric-footer">
+          <div class="mini-bar-track"><div class="mini-bar-fill" style="width: 82%"></div></div>
+          <span class="metric-caption">82% capacity loaded</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-header">
+          <span class="metric-label">Inference Latency</span>
+          <span class="metric-trend neutral">&plusmn;0.8ms</span>
+        </div>
+        <div class="metric-value"><span id="stat-latency">18</span><small>ms</small></div>
+        <div class="metric-footer">
+          <div class="mini-bar-track"><div class="mini-bar-fill fill-cyan" style="width: 25%"></div></div>
+          <span class="metric-caption">Ultra-low edge response</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-header">
+          <span class="metric-label">Tokens Synthesized</span>
+          <span class="metric-trend positive">+38.6k</span>
+        </div>
+        <div class="metric-value" id="stat-tokens">1,482,920</div>
+        <div class="metric-footer">
+          <div class="mini-bar-track"><div class="mini-bar-fill fill-amber" style="width: 68%"></div></div>
+          <span class="metric-caption">Daily budget healthy</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-header">
+          <span class="metric-label">Model Reliability</span>
+          <span class="metric-trend positive">99.98%</span>
+        </div>
+        <div class="metric-value" id="stat-uptime">99.9%</div>
+        <div class="metric-footer">
+          <div class="mini-bar-track"><div class="mini-bar-fill fill-emerald" style="width: 99%"></div></div>
+          <span class="metric-caption">Zero degradation detected</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive AI Sandbox & Preview Section -->
+    <section class="sandbox-section" id="sandbox">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Interactive AI Sandbox</h2>
+          <p class="section-desc">Generate real-time neural concept assets and inspect pipeline payloads.</p>
+        </div>
+        <div class="pipeline-badge" id="sandbox-indicator">
+          <span class="pulse-indicator"></span> Ready to Prompt
+        </div>
+      </div>
+
+      <div class="sandbox-layout">
+        <!-- Input & Control Panel -->
+        <div class="glass-card control-panel">
+          <h3 class="panel-title">Generation Parameters</h3>
+
+          <div class="form-group">
+            <label for="prompt-input" class="form-label">Creative Prompt</label>
+            <div class="input-wrapper">
+              <textarea id="prompt-input" rows="3" placeholder="Describe the scene, lighting, mood, or structural style...">Cyberpunk bioluminescent botanical garden with floating neon water droplets</textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="style-select" class="form-label">Render Engine</label>
+              <select id="style-select" class="custom-select">
+                <option value="neural-flux">Neural Flux 3.0 (Photoreal)</option>
+                <option value="holographic">Holographic Glass & Neon</option>
+                <option value="vector-synth">Synthwave Vector Grid</option>
+                <option value="deep-cinema">Cinematic 8K Unreal</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="steps-slider" class="form-label">Diffusion Steps: <span id="steps-val">28</span></label>
+              <input type="range" id="steps-slider" min="10" max="60" value="28" class="range-slider">
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary btn-block" id="btn-generate">
+              <span class="btn-icon">⚡</span>
+              <span>Execute Neural Generation</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-random-prompt">🎲 Surprise Me</button>
+          </div>
+        </div>
+
+        <!-- Live Output Preview -->
+        <div class="glass-card preview-panel" id="preview-container">
+          <div class="preview-header">
+            <span class="preview-tag" id="preview-tag">Canvas View</span>
+            <div class="preview-actions">
+              <button class="icon-btn" id="btn-copy-meta" title="Copy Metadata">📋</button>
+              <button class="icon-btn" id="btn-fullscreen-preview" title="Expand View">⛶</button>
+            </div>
+          </div>
+
+          <div class="preview-canvas-wrapper" id="canvas-wrapper">
+            <canvas id="generative-canvas" width="600" height="380"></canvas>
+            
+            <!-- Generation Loading Overlay -->
+            <div class="generation-loader" id="generation-loader" style="display: none;">
+              <div class="spinner"></div>
+              <p class="loader-text" id="loader-status">Synthesizing latent diffusion...</p>
+              <div class="loader-progress-bar">
+                <div class="loader-progress-fill" id="loader-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-footer">
+            <div class="meta-item">
+              <span class="meta-label">Output Hash:</span>
+              <span class="meta-value" id="preview-hash">#9a4f-c801</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Compute Time:</span>
+              <span class="meta-value" id="preview-time">142ms</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Resolution:</span>
+              <span class="meta-value" id="preview-res">1920 &times; 1080</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace Projects Section with Filters -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Active Workspaces</h2>
+          <p class="section-desc">Manage generated pipelines, deployed endpoints, and live agent instances.</p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" id="filter-tabs">
+          <button class="filter-btn active" data-filter="all" id="filter-all">All Projects</button>
+          <button class="filter-btn" data-filter="generative" id="filter-generative">Generative</button>
+          <button class="filter-btn" data-filter="analytics" id="filter-analytics">Analytics</button>
+          <button class="filter-btn" data-filter="agents" id="filter-agents">Autonomous Agents</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered via Javascript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for Creating New Project -->
+  <div class="modal-backdrop" id="project-modal" style="display: none;">
+    <div class="modal-dialog glass-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Initiate New Neural Project</h3>
+        <button class="modal-close-btn" id="btn-close-modal">&times;</button>
+      </div>
+      <form id="new-project-form">
+        <div class="form-group">
+          <label for="project-name" class="form-label">Project Identifier</label>
+          <input type="text" id="project-name" class="custom-input" placeholder="e.g. Hyperion Vision Agent" required>
+        </div>
+        <div class="form-group">
+          <label for="project-category-select" class="form-label">Category Architecture</label>
+          <select id="project-category-select" class="custom-select">
+            <option value="generative">Generative Synthesis</option>
+            <option value="analytics">Real-time Telemetry & Analytics</option>
+            <option value="agents">Autonomous Agent Cluster</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="project-description" class="form-label">Objective Description</label>
+          <textarea id="project-description" class="custom-input" rows="3" placeholder="Brief scope of the neural workflow..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit-project">Launch Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <span>AURA STUDIO &bull; Version 3.4.0 Engine</span>
+      <span class="footer-separator">&bull;</span>
+      <span>Engineered with HTML5, CSS3, & Modern JavaScript</span>
+      <span class="footer-separator">&bull;</span>
+      <span class="status-indicator">All Systems Operational</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

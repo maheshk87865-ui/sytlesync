@@ -1,0 +1,54 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "barbershop interior with leather chairs and grooming tools"
+✅ Got 6 images
+{
+  "success": true,
+  "query": "barbershop interior with leather chairs and grooming tools",
+  "count": 6,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/879ab376a527.jpeg",
+      "caption": "",
+      "source": "theCut",
+      "original_width": "1863px",
+      "original_height": "1832px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cee4081018c9.jpg",
+      "caption": "",
+      "source": "Collins Salon Equipment, Beauty Equipment & Barber Equipment",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/eec82020f69c.jpg",
+      "caption": "",
+      "source": "Omni Home ideas",
+      "original_width": "1000px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/bceb448713bc.jpg",
+      "caption": "",
+      "source": "Salon City",
+      "original_width": "1024px",
+      "original_height": "1024px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ded66af17260.jpg",
+      "caption": "",
+      "source": "Shutterstock",
+      "original_width": "1500px",
+      "original_height": "953px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3d7b716bef90.jpeg",
+      "caption": "",
+      "source": "Pexels",
+      "original_width": "1125px",
+      "original_height": "750px"
+    }
+  ]
+}

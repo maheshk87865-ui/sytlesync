@@ -1,0 +1,1292 @@
+## Error Type
+Console Error
+
+## Error Message
+A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <SegmentViewNode type="page" pagePath="page.tsx">
+      <SegmentTrieNode>
+      <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+        <Home params={Promise} searchParams={Promise}>
+          <div className="flex min-h..." suppressHydrationWarning={true}>
+            <SiteHeader>
+            <main className="mx-auto w-...">
+              <HomeView>
+                <div className="space-y-8">
+                  <section>
+                  <ServiceCategories>
+                  <PopularServices>
+                  ...
+                    <div ref={{current:null}} className="flex gap-4..." style={{...}}>
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"urban-...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Urban Groom — Modern men's grooming salon"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"royal-...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Royal Roots — Heritage barber & grooming lounge"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=256&q=75 256w, /_next/image?url..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"premiu...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Premium Roots — Premium unisex salon & spa"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"elegan...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Elegance Studio — Facial, waxing & threading studio"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"kashmi...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Kashmir Beauty Studio — Skin-first beauty & facial studio"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"style-...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Style Lounge — Unisex styling & colour studio"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=256&q=75 256w, /_next/image?url..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"glow-g...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Glow & Grace — Bridal & party makeup studio"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"groom-...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"The Groom Room — Quick men's haircut & shave bar"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-14.png&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-14.png&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"aura-b...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Aura Beauty — Bridal, pre-bridal & nail atelier"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"style-hub", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"The Style Hub — Full-service unisex salon & spa"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-30.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-30.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                  <section>
+                    <div>
+                    <div className="grid grid-...">
+                      <SalonCard salon={{id:"kashmi...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Kashmir Beauty Studio — Skin-first beauty & facial studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"premiu...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Premium Roots — Premium unisex salon & spa"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"glow-g...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Glow & Grace — Bridal & party makeup studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"royal-...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Royal Roots — Heritage barber & grooming lounge"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=256&q=75 256w, /_next/image?url=%..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"style-...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Style Lounge — Unisex styling & colour studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=256&q=75 256w, /_next/image?url=%..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"aura-b...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Aura Beauty — Bridal, pre-bridal & nail atelier"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"urban-...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Urban Groom — Modern men's grooming salon"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-05.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"elegan...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Elegance Studio — Facial, waxing & threading studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-09.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                  ...
+                    <div ref={{current:null}} className="flex gap-4..." style={{...}}>
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"premiu...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Premium Roots — Premium unisex salon & spa"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"royal-...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Royal Roots — Heritage barber & grooming lounge"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=256&q=75 256w, /_next/image?url..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                      <div className="snap-start">
+                        <SalonCard salon={{id:"kashmi...", ...}} variant="carousel" onOpen={function onOpen}>
+                          <article className="group rela...">
+                            <div className="relative a...">
+                              <div>
+                              <img
+                                alt={"Kashmir Beauty Studio — Skin-first beauty & facial studio"}
+                                fetchPriority={undefined}
+                                loading="lazy"
+                                width={undefined}
+                                height={undefined}
+                                decoding="async"
+                                data-nimg="fill"
+                                className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                                style={{
++                                 position: "absolute"
+-                                 position: "absolute"
++                                 height: "100%"
+-                                 height: "100%"
++                                 width: "100%"
+-                                 width: "100%"
++                                 left: 0
+-                                 left: "0px"
++                                 top: 0
+-                                 top: "0px"
++                                 right: 0
+-                                 right: "0px"
++                                 bottom: 0
+-                                 bottom: "0px"
++                                 objectFit: undefined
++                                 objectPosition: undefined
++                                 color: "transparent"
+-                                 color: "transparent"
+-                                 --darkreader-inline-color: "transparent"
+                                }}
+                                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                                srcSet={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=256&q=75 256w, /_next/image?url=..."}
+                                src={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=3840&q=75"}
+                                ref={function}
+                                onLoad={function onLoad}
+                                onError={function onError}
+-                               data-darkreader-inline-color=""
+                              >
+                              ...
+                            ...
+                  <section>
+                    <div>
+                    <div className="grid grid-...">
+                      <SalonCard salon={{id:"premiu...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Premium Roots — Premium unisex salon & spa"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-29.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"royal-...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Royal Roots — Heritage barber & grooming lounge"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=256&q=75 256w, /_next/image?url=%..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-01.jpeg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"kashmi...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Kashmir Beauty Studio — Skin-first beauty & facial studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-07.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"glow-g...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Glow & Grace — Bridal & party makeup studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-20.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"style-...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Style Lounge — Unisex styling & colour studio"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=256&q=75 256w, /_next/image?url=%..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-32.jpeg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"aura-b...", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"Aura Beauty — Bridal, pre-bridal & nail atelier"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-25.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+                      <SalonCard salon={{id:"style-hub", ...}} variant="grid" onOpen={function onOpen}>
+                        <article className="group rela...">
+                          <div className="relative a...">
+                            <div>
+                            <img
+                              alt={"The Style Hub — Full-service unisex salon & spa"}
+                              fetchPriority={undefined}
+                              loading="lazy"
+                              width={undefined}
+                              height={undefined}
+                              decoding="async"
+                              data-nimg="fill"
+                              className="object-cover transition-all duration-500 group-hover:scale-105 opacity-0"
+                              style={{
++                               position: "absolute"
+-                               position: "absolute"
++                               height: "100%"
+-                               height: "100%"
++                               width: "100%"
+-                               width: "100%"
++                               left: 0
+-                               left: "0px"
++                               top: 0
+-                               top: "0px"
++                               right: 0
+-                               right: "0px"
++                               bottom: 0
+-                               bottom: "0px"
++                               objectFit: undefined
++                               objectPosition: undefined
++                               color: "transparent"
+-                               color: "transparent"
+-                               --darkreader-inline-color: "transparent"
+                              }}
+                              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                              srcSet={"/_next/image?url=%2Fsalons%2Fsalon-30.jpg&w=256&q=75 256w, /_next/image?url=%2..."}
+                              src={"/_next/image?url=%2Fsalons%2Fsalon-30.jpg&w=3840&q=75"}
+                              ref={function}
+                              onLoad={function onLoad}
+                              onError={function onError}
+-                             data-darkreader-inline-color=""
+                            >
+                            ...
+                          ...
+            ...
+    ...
+
+
+
+    at img (<anonymous>:null:null)
+
+Next.js version: 16.1.3 (Turbopack)
