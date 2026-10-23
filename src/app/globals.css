@@ -1,0 +1,481 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* StyleSync brand — Warm neutral background (#F7F7F4) + Dark navy text (#172033) */
+  --background: oklch(0.97 0.003 85);      /* #F7F7F4 warm neutral */
+  --foreground: oklch(0.21 0.035 250);     /* #172033 dark navy */
+  --card: oklch(1 0 0);                   /* #FFFFFF Pure White */
+  --card-foreground: oklch(0.21 0.035 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.035 250);
+  /* Primary = Sky Blue #0284C7 (KEEP EXISTING) */
+  --primary: oklch(0.55 0.13 230);
+  --primary-foreground: oklch(0.99 0.005 230);
+  /* Secondary = Very Light Blue #F1F7FA surface (for secondary sections, icon circles) */
+  --secondary: oklch(0.96 0.012 230);
+  --secondary-foreground: oklch(0.4 0.13 230);
+  /* Muted = slightly lighter warm neutral */
+  --muted: oklch(0.965 0.003 85);
+  --muted-foreground: oklch(0.55 0.025 250); /* #667085 muted blue-gray */
+  /* Accent = lighter sky-blue #0EA5E9 */
+  --accent: oklch(0.65 0.13 230);
+  --accent-foreground: oklch(0.99 0.005 230);
+  --destructive: oklch(0.577 0.245 27.325);
+  /* Border = soft blue-gray */
+  --border: oklch(0.92 0.008 230);
+  --input: oklch(0.92 0.008 230);
+  /* Ring = Sky Blue #0EA5E9 */
+  --ring: oklch(0.65 0.13 230);
+  /* Chart palette: sky-blue variations */
+  --chart-1: oklch(0.55 0.13 230);
+  --chart-2: oklch(0.65 0.13 230);
+  --chart-3: oklch(0.75 0.10 230);
+  --chart-4: oklch(0.85 0.06 230);
+  --chart-5: oklch(0.92 0.03 230);
+  --sidebar: oklch(0.97 0.003 85);
+  --sidebar-foreground: oklch(0.21 0.035 250);
+  --sidebar-primary: oklch(0.55 0.13 230);
+  --sidebar-primary-foreground: oklch(0.99 0.005 230);
+  --sidebar-accent: oklch(0.96 0.012 230);
+  --sidebar-accent-foreground: oklch(0.4 0.13 230);
+  --sidebar-border: oklch(0.92 0.008 230);
+  --sidebar-ring: oklch(0.65 0.13 230);
+}
+
+/* Brand utility classes */
+@layer utilities {
+  /* Sky-blue gradient — used for the small StyleSync logo box, primary CTAs,
+     active states. NOT used as a large background. */
+  .ss-brand-gradient {
+    background-image: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
+  }
+  .ss-brand-text-gradient {
+    background-image: linear-gradient(135deg, #0284C7, #0EA5E9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ss-brand-name {
+    color: #0284C7;
+  }
+
+  /* Hero — premium salon photo with a SOFT sky-blue gradient overlay.
+     The image stays clearly visible; text on the left/bottom remains
+     readable thanks to the slightly stronger overlay there. */
+  .ss-hero {
+    position: relative;
+    isolation: isolate;
+    background-image: url("/salons/hero-1.jpg");
+    background-size: cover;
+    background-position: center 35%;
+    background-repeat: no-repeat;
+  }
+  .ss-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(110deg, rgba(2, 132, 199, 0.62) 0%, rgba(2, 132, 199, 0.32) 45%, rgba(2, 132, 199, 0.08) 100%),
+      linear-gradient(to top, rgba(8, 32, 48, 0.45) 0%, rgba(8, 32, 48, 0.05) 55%, rgba(8, 32, 48, 0) 100%);
+  }
+
+  /* AI band — soft very-light blue → warm neutral section background. */
+  .ss-ai-band {
+    position: relative;
+    background:
+      linear-gradient(180deg, #F1F7FA 0%, #F7F7F4 100%);
+  }
+
+  /* Premium light card — white surface with soft sky-blue border. */
+  .ss-glass {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(2, 132, 199, 0.16);
+    box-shadow: 0 8px 28px rgba(2, 132, 199, 0.08), 0 1px 2px rgba(2, 132, 199, 0.04);
+  }
+  .ss-glass-strong {
+    background: #FFFFFF;
+    border: 1px solid rgba(2, 132, 199, 0.22);
+    box-shadow: 0 12px 36px rgba(2, 132, 199, 0.10), 0 1px 2px rgba(2, 132, 199, 0.05);
+  }
+  .ss-glass-suggestion {
+    background: #FFFFFF;
+    border: 1px solid rgba(2, 132, 199, 0.10);
+    box-shadow: 0 1px 2px rgba(2, 132, 199, 0.04);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .ss-glass-suggestion:hover {
+    border-color: rgba(2, 132, 199, 0.35);
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.10);
+    transform: translateY(-1px);
+  }
+
+  .ss-card-shadow {
+    box-shadow: 0 1px 2px rgba(2, 132, 199, 0.04), 0 6px 18px rgba(2, 132, 199, 0.06);
+  }
+  .ss-card-shadow-hover {
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.06), 0 14px 30px rgba(2, 132, 199, 0.10);
+  }
+  .ss-no-scrollbar::-webkit-scrollbar { display: none; }
+  .ss-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .ss-page-no-overflow { overflow-x: hidden; }
+
+  /* Accent text — used over the hero for highlighting words.
+     Light sky-blue works on dark blue overlay. */
+  .ss-accent {
+    color: #7DD3FC;
+  }
+
+  /* Sky-blue accent (replaces champagne) — for stars, hearts, accents */
+  .ss-champagne {
+    color: #0EA5E9;
+  }
+  .ss-champagne-bg {
+    background-color: #0EA5E9;
+  }
+}
+
+/* Smooth scrolling for carousels */
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+/* ================================================================
+   DEEP BLUE-TEAL DARK THEME — applied to ALL non-Home pages + all sheets.
+   Reference color #10232D (Primary Teal). The Home page uses the
+   :root (sky-blue) variables and is NOT affected by this block.
+   Sheets/modals always use this theme regardless of which page opened them.
+   ================================================================ */
+.teal-theme {
+  --background: #090D16;             /* Obsidian Midnight — rich modern luxury background */
+  --foreground: #F8FAFC;            /* Crisp clean white-silver text */
+  --card: #111827;                  /* Polished luxury slate card */
+  --card-foreground: #F8FAFC;
+  --popover: #111827;               /* Popover slate */
+  --popover-foreground: #F8FAFC;
+  --primary: #3B82F6;               /* Electric Blue / Indigo primary */
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E293B;             /* Refined Slate secondary surface */
+  --secondary-foreground: #E2E8F0;  /* Crisp secondary text */
+  --muted: #1E293B;                 /* Muted slate surface */
+  --muted-foreground: #94A3B8;      /* Clean muted silver */
+  --accent: #60A5FA;                /* Light electric blue accent */
+  --accent-foreground: #090D16;
+  --destructive: #EF4444;           /* Refined crimson */
+  --border: #1E293B;                /* Hairline slate border */
+  --input: #1E293B;
+  --ring: #3B82F6;
+  --chart-1: #3B82F6;
+  --chart-2: #60A5FA;
+  --chart-3: #818CF8;
+  --chart-4: #93C5FD;
+  --chart-5: #64748B;
+  --sidebar: #06090E;               /* Deep obsidian sidebar */
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #111827;
+  --sidebar-accent-foreground: #60A5FA;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #3B82F6;
+
+  --radius: 0.85rem;
+}
+
+/* In dark luxury theme, treat `bg-white` as the card surface so that
+   existing components written for the light theme automatically pick up
+   the deep slate card background. Hero-image overlays (which require a
+   real translucent white) use `bg-white/10` / `bg-white/20` etc., which
+   we leave untouched below by overriding only solid `bg-white`. */
+.teal-theme .bg-white:not(.bg-white\/10):not(.bg-white\/15):not(.bg-white\/20):not(.bg-white\/30):not(.bg-white\/40):not(.bg-white\/50):not(.bg-white\/60):not(.bg-white\/70):not(.bg-white\/80):not(.bg-white\/90):not(.bg-white\/95) {
+  background-color: var(--card);
+}
+.teal-theme .bg-white\/80 { background-color: rgba(17, 24, 39, 0.85); }
+.teal-theme .bg-white\/90 { background-color: rgba(17, 24, 39, 0.92); }
+.teal-theme .bg-white\/95 { background-color: rgba(17, 24, 39, 0.96); }
+.teal-theme .hover\:bg-white:hover { background-color: var(--card); }
+.teal-theme .hover\:bg-white\/90:hover { background-color: rgba(17, 24, 39, 0.92); }
+.teal-theme .hover\:bg-white\/20:hover { background-color: rgba(255, 255, 255, 0.20); }
+
+/* Status pill colors — replace hardcoded sky-blue/gray with semantic tokens */
+.teal-theme .bg-\[\#E0F2FE\] {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--accent);
+}
+.teal-theme .text-\[\#0284C7\] { color: var(--accent); }
+.teal-theme .ring-\[\#0EA5E9\]\/30 { box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.30) inset; }
+.teal-theme .bg-\[\#0284C7\] { background-color: var(--accent); }
+.teal-theme .bg-\[\#64748B\] { background-color: var(--muted-foreground); }
+.teal-theme .text-\[\#64748B\] { color: var(--muted-foreground); }
+.teal-theme .ring-\[\#64748B\]\/20 { box-shadow: 0 0 0 1px rgba(154, 174, 179, 0.20) inset; }
+.teal-theme .bg-\[\#0EA5E9\] { background-color: var(--accent); }
+.teal-theme .bg-\[\#0EA5E9\]\/90 { background-color: rgba(24, 175, 199, 0.9); }
+.teal-theme .hover\:bg-\[\#0EA5E9\]\/90:hover { background-color: rgba(24, 175, 199, 0.9); }
+.teal-theme .fill-\[\#0EA5E9\] { fill: currentColor; }
+.teal-theme .text-\[\#0EA5E9\] { color: var(--accent); }
+.teal-theme .bg-\[\#F1F7FA\] { background-color: var(--secondary); }
+
+/* Status indicators — amber/emerald/rose → teal/cyan equivalents */
+.teal-theme .bg-amber-50 { background-color: rgba(24, 175, 199, 0.10); }
+.teal-theme .bg-amber-100 { background-color: rgba(24, 175, 199, 0.18); }
+.teal-theme .bg-amber-400 { background-color: var(--accent); }
+.teal-theme .bg-amber-600 { background-color: var(--accent); }
+.teal-theme .hover\:bg-amber-700:hover { background-color: rgba(24, 175, 199, 0.85); }
+.teal-theme .hover\:bg-amber-100:hover { background-color: rgba(24, 175, 199, 0.20); }
+.teal-theme .hover\:bg-emerald-100:hover { background-color: rgba(24, 175, 199, 0.20); }
+.teal-theme .text-amber-400 { color: var(--accent); }
+.teal-theme .text-amber-600 { color: var(--accent); }
+.teal-theme .text-amber-700 { color: var(--accent); }
+.teal-theme .text-amber-800 { color: var(--accent); }
+.teal-theme .text-amber-900 { color: #FFFFFF; }
+.teal-theme .border-amber-200 { border-color: rgba(24, 175, 199, 0.30); }
+.teal-theme .border-amber-400 { border-color: var(--accent); }
+.teal-theme .fill-amber-400 { fill: var(--accent); }
+
+.teal-theme .bg-emerald-50 { background-color: rgba(24, 175, 199, 0.12); }
+.teal-theme .text-emerald-300 { color: rgba(24, 175, 199, 0.85); }
+.teal-theme .text-emerald-600 { color: var(--accent); }
+.teal-theme .text-emerald-700 { color: var(--accent); }
+.teal-theme .border-emerald-200 { border-color: rgba(24, 175, 199, 0.30); }
+.teal-theme .border-emerald-400 { border-color: var(--accent); }
+.teal-theme .ring-emerald-200 { box-shadow: 0 0 0 1px rgba(24, 175, 199, 0.30) inset; }
+
+.teal-theme .bg-rose-50 { background-color: rgba(24, 175, 199, 0.18); }
+.teal-theme .text-rose-500 { color: var(--accent); }
+.teal-theme .text-rose-700 { color: var(--accent); }
+.teal-theme .border-rose-200 { border-color: rgba(24, 175, 199, 0.40); }
+.teal-theme .fill-rose-500 { fill: var(--accent); }
+.teal-theme .hover\:text-rose-500:hover { color: var(--accent); }
+
+.teal-theme .ss-brand-gradient {
+  background-image: linear-gradient(135deg, #0B91B5 0%, #18AFC7 100%);
+}
+.teal-theme .ss-brand-text-gradient {
+  background-image: linear-gradient(135deg, #18AFC7, #28C4DC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.teal-theme .ss-brand-name {
+  color: #18AFC7;
+}
+.teal-theme .ss-glass {
+  background: rgba(22, 52, 64, 0.96);
+  border: 1px solid rgba(41, 67, 77, 0.85);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.teal-theme .ss-glass-strong {
+  background: #163440;
+  border: 1px solid rgba(24, 175, 199, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.20);
+}
+.teal-theme .ss-glass-suggestion {
+  background: #163440;
+  border: 1px solid rgba(41, 67, 77, 0.80);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
+}
+.teal-theme .ss-glass-suggestion:hover {
+  border-color: rgba(24, 175, 199, 0.50);
+  box-shadow: 0 4px 14px rgba(24, 175, 199, 0.15);
+}
+.teal-theme .ss-card-shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.20), 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+.teal-theme .ss-card-shadow-hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), 0 14px 30px rgba(24, 175, 199, 0.15);
+}
+.teal-theme .ss-accent {
+  color: #28C4DC;
+}
+.teal-theme .ss-champagne {
+  color: #18AFC7;
+}
+.teal-theme .ss-champagne-bg {
+  background-color: #18AFC7;
+}
+.teal-theme .ss-hero::before {
+  background:
+    linear-gradient(110deg, rgba(11, 145, 181, 0.62) 0%, rgba(11, 145, 181, 0.32) 45%, rgba(11, 145, 181, 0.08) 100%),
+    linear-gradient(to top, rgba(11, 28, 36, 0.65) 0%, rgba(11, 28, 36, 0.10) 55%, rgba(11, 28, 36, 0) 100%);
+}
+.teal-theme .ss-ai-band {
+  background: linear-gradient(180deg, #0B1C24 0%, #10232D 100%);
+}
+
+/* Site header — override hardcoded warm-cream backgrounds so the header
+   adapts to the dark teal theme on non-Home pages while staying warm-cream
+   on the Home page (:root). */
+.teal-theme .bg-\[rgba\(250\,248\,243\,0\.92\)\] {
+  background-color: rgba(11, 28, 36, 0.92);
+}
+.teal-theme .supports-\[backdrop-filter\]\:bg-\[rgba\(250\,248\,243\,0\.85\)\] {
+  background-color: rgba(11, 28, 36, 0.85);
+}
+.teal-theme .bg-\[rgba\(255\,255\,255\,0\.55\)\] {
+  background-color: rgba(16, 35, 45, 0.55);
+}
+.teal-theme .bg-\[rgba\(250\,248\,243\,0\.95\)\],
+.teal-theme.bg-\[rgba\(250\,248\,243\,0\.95\)\] {
+  background-color: rgba(11, 28, 36, 0.95);
+}
+.teal-theme .ring-white { --tw-ring-color: rgba(255, 255, 255, 0.20); }
+
+/* Bottom navigation — always dark teal (#0B1C24) regardless of where it's
+   rendered, to match the user spec "Background: #0B1C24" for navigation.
+   Defined as a standalone class (no .teal-theme descendant scope needed)
+   so it applies whether the nav is the .teal-theme element itself or a
+   descendant of one. Using a CSS class instead of inline style so that
+   browser extensions like DarkReader have less to modify in the style
+   attribute (reduces hydration mismatches). */
+.ss-bottom-nav-bg {
+  background-color: rgba(11, 28, 36, 0.95);
+}
+
+/* Header search input — use card surface so it adapts */
+.teal-theme header .bg-white {
+  background-color: rgba(22, 52, 64, 0.65);
+}
+
+/* Popover & dropdown menus — translucent dark teal panels */
+.teal-theme [data-slot="popover-content"],
+.teal-theme [data-slot="select-content"],
+.teal-theme [data-slot="dropdown-menu-content"],
+.teal-theme [role="dialog"] {
+  background-color: #163440 !important;
+  border-color: #29434D !important;
+  color: #FFFFFF;
+}
+
+/* Sheet/Modal content — dark teal surfaces */
+.teal-theme [data-slot="sheet-content"],
+.teal-theme [data-slot="dialog-content"] {
+  background-color: #10232D !important;
+  border-color: #29434D !important;
+  color: #FFFFFF;
+}
+
+/* Calendar today highlight */
+.teal-theme .rdp-day_today {
+  border-color: var(--accent) !important;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
